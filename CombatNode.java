@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 public class CombatNode extends Node {
   public int getEnemies() {
     return enemies;
@@ -12,9 +13,11 @@ public class CombatNode extends Node {
   public int addEnemies(int numSummoned){
     return (enemies + numSummoned);
   }
-  public int xp (int monstherRating){ //monsterRating should be the average monsterRating of the monsters in the combat
+  public int xp (int monsterRating){ //monsterRating should be the average monsterRating of the monsters in the combat
     return ( monsterRating * enemies );
   }
-    
-  private int enemies = -1 //add an equation to randomly generate enemies
+  
+  private int enemies = -1 ;//add an equation to randomly generate number of enemies
+  private String[] SpecialMonsters = {"Armoured Skeleton","Flame Archer","Skeletal Wizard"};
+  private String[] NormalMonsters = {"Skeleton","Skeleton Archer","Zombie"};
 }
