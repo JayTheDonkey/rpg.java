@@ -1,21 +1,27 @@
 import java.util.ArrayList;
+
 public class CombatNode extends Node {
+  public CombatNode(ArrayList<Monster> tempListSpecial, ArrayList<Monster> tempListNormal) {
+    listSpecial = tempListSpecial;
+    listNormal = tempListNormal;
+    }
   public void startCombat(){
     enemies = utils.random(7,16); //make a good enemy number generator
     normalMonsters = (int)(enemies * .85);
     specialMonsters = (int)(enemies - normalMonsters);
   }
   //creates an arraylist of all the monsters starting in the combat
-  public void monsterList(){//will actually return an arraylist but i dont know how to do that
-    ArrayList<String> monsterList = new ArrayList<String>();
+  public ArrayList<Monster> monsterList(){
+    ArrayList<Monster> monsterList = new ArrayList<Monster>();
     while (specialMonsters != 0){
-      monsterList.add(listSpecial[utils.random(1,3)]);
+      monsterList.add(listSpecial.get(utils.random(1,3)));
       specialMonsters--;}
     while (normalMonsters !=0){
-      monsterList.add(listNormal[utils.random(1,3)]);
+      monsterList.add(listNormal.get(utils.random(1,3)));
       normalMonsters--;}
+    return monsterList;
   }
-      
+
   public int getEnemies() {
     return enemies;
   }
@@ -38,8 +44,8 @@ public class CombatNode extends Node {
   private int enemies = 0;
   private int normalMonsters = 0;
   private int specialMonsters = 0;
-  private String[] listSpecial = {"Armoured Skeleton","Flame Archer","Skeletal Wizard"};//add more
-  private String[] listNormal = {"Skeleton","Skeleton Archer","Zombie"};//add more
+  private ArrayList<Monster> listSpecial;
+  private ArrayList<Monster> listNormal;
 }
 
 

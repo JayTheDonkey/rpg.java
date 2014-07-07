@@ -1,0 +1,28 @@
+public abstract class Creature {
+ public Creature(String tempName, Weapon[] tempWeapons, int tempDefenseValue, int tempAgility, int tempHealRate) {
+  name = tempName;
+  weapons = tempWeapons;
+  defenseValue = tempDefenseValue;
+  agility = tempAgility;
+  healRate = tempHealRate;
+  }
+
+ public int dealDamage(int weaponNumber) {
+  if(weaponNumber >= 0 && weaponNumber < weapons.length) {
+   return weapons[weaponNumber].damage();
+   }
+  return 0;
+  }
+
+ // this function will be called whenever you try to print this object
+ public String toString() {
+  return name;
+  }
+
+ private String name;
+ private Weapon[] weapons;
+ private int defenseValue;
+ private int agility;
+ private int healRate;
+ private int health;
+ }
