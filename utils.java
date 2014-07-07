@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Utils {
+public class utils {
   public static void sleep(int milliseconds) {
     try {
     Thread.sleep(milliseconds);
