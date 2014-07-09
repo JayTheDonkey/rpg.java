@@ -1,0 +1,51 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	background: #222;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 36px;
+	}
+
+main {
+	max-width: 1000px;
+	margin: auto;
+	padding: 1em;
+	}
+
+.human, .server {
+	margin: 1em 0;
+	width: 75%;
+	}
+
+.human {
+	color: #ccc;
+	a {
+		color: #ccc;
+		&:hover {
+			color: white;
+			}
+		}
+	}
+
+.server {
+	color: #999;
+	margin-left: auto;
+	a {
+		color: #999;
+		&:hover {
+			color: #ccc;
+			}
+		}
+	}
+
+::-webkit-scrollbar {
+	width: 8px;
+	}
+::-webkit-scrollbar-track {
+	background: transparent; 
+	border-radius: 5px;
+	}
+::-webkit-scrollbar-thumb {
+	border-radius: 5px;
+	background: gray;
+	}

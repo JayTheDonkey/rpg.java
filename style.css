@@ -1,0 +1,32 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #222;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 36px; }
+
+main {
+  max-width: 1000px;
+  margin: auto;
+  padding: 1em; }
+
+.human, .server {
+  margin: 1em 0;
+  width: 75%; }
+
+.human {
+  color: #ccc; }
+  .human a {
+    color: #ccc; }
+    .human a:hover {
+      color: white; }
+
+.server {
+  color: #999;
+  margin-left: auto; }
+  .server a {
+    color: #999; }
+    .server a:hover {
+      color: #ccc; }
+
+/*# sourceMappingURL=style.css.map */
