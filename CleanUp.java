@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 public class CleanUp {
-  public void simple(ArrayList<Monster> monsters){
+  public static void printMonsters(ArrayList<Monster> monsters){
     ArrayList<String> monsterNames = new ArrayList<String>();
     for (int i = 0; i < monsters.size(); i++){
       monsterNames.add((monsters.get(i).toString()));
     }
     ArrayList<String> names = new ArrayList<String>();
        ArrayList<Integer> number = new ArrayList<Integer>();
-       while(monsters.size() > 0) {
+       while(monsterNames.size() > 0) {
            String current = monsterNames.remove(0);
            boolean exists = false;
            for(int i = 0; i < names.size(); i++) {
