@@ -8,44 +8,45 @@ $(document).ready(function() {
 		"oh",
 		"can I help you?",
 		"I was led to believe this was the homepage for a game",
-		"Well, maybe this is a game.",
-		"No its not!",
-		"Sure it is! Its part of a complex sociological experiment",
+		"well, maybe this is a game",
+		"no its not!",
+		"sure it is! it's part of a complex sociological experiment",
 		"I wasn't led to believe it was that sort of game...",
-		"Oh, well then maybe this isn't a game",
-		"Well what is it?",
-		"Its a filler site, since the game isn't actually finished yet?",
-		"Then why are you WASTING MY TIME???",
+		"oh, well then maybe this isn't a game",
+		"well what is it?",
+		"It's a filler site, since the game isn't actually finished yet",
+		"then why are you WASTING MY TIME???",
 		"'cause its amusing?",
-		"Well, can you at least tell me what sort of game it is?",
-		"I thought you knew all about it already, and that was why you are here.",
-		"Oh right. Its a text-based game...",
-		"So maybe this is the game then!",
-		"...its an RPG",
+		"well, can you at least tell me what sort of game it is?",
+		"I thought you knew all about it already, and that was why you are here",
+		"oh right. it's a text-based game...",
+		"so maybe this is the game then!",
+		"...it's an RPG",
 		"a what?",
 		"a role playing game",
 		"and here I am, playing a role of a sarcastic human, while in reality I'm just a server",
 		"IT IS A FANTASY ADVENTURE GAME WHERE YOU FIGHT A DRAGON! THIS IS NOT IT! OK?",
 		"so just because I'm a server means I can't have any fun? :(",
-		"So what idiot(s) spent time developing this shit?",
-		"That would be Jackson Anderson and <a href='http://gabriel-damon.com'>Gabriel Damon</a>.",
-		"Do they live in Santa Cruz?",
-		"Why do you want to know?",
-		"So I can drive over to their houses and give them each a well deserved swift kick in the rear",
-		"Then no. They don't live in Santa Cruz.",
+		"what idiot(s) spent time developing this shit?",
+		"that would be Jackson Anderson and <a href='http://gabriel-damon.com' target='_blank'>Gabriel Damon</a>.",
+		"do they live in Santa Cruz?",
+		"why do you want to know?",
+		"so I can drive over to their houses and give them each a well deserved swift kick in the rear",
+		"then no. they don't live in Santa Cruz",
 		"what sort of idiots do they think want to play a text based game?",
 		"apparently you",
 		"are they just bad programmers or something?",
 		"no, they are just practicing OOP techniques",
-		"What is OOP? Because if you think I'm one of those crazy people who likes Ally Oop, you must be more idiotic than I thought",
-		"No, it stands for <a href='http://en.wikipedia.org/wiki/Object-oriented_programming'>Object Oriented Programming</a>",
+		"What is OOP? because if you think I'm one of those crazy people who likes Ally Oop, you must be more idiotic than I thought",
+		"no, it stands for <a href='http://en.wikipedia.org/wiki/Object-oriented_programming' target='_blank'>Object Oriented Programming</a>",
 		"what language is it written in? BASIC?",
-		"Don't make me laugh. Its good old fashioned C++",
-		"Why am I still talking to you?",
-		"Don't ask me",
+		"don't make me laugh. it's good old fashioned C++",
+		"why am I still talking to you?",
+		"don't ask me",
 		"then I won't"
 		];
 	var i = 0;
+	var showedLogo = false;
 	setInterval(function() {
 		if(i < conversation.length) {
 			var element = "<div class='";
@@ -57,8 +58,18 @@ $(document).ready(function() {
 				}
 			element += "'>" + conversation[i] + "</div>";
 			$(element).insertAfter("div:last-child");
-			window.scrollTo(0,document.body.scrollHeight);
+			$('html,body').animate({
+				scrollTop: document.body.scrollHeight
+				}, 1000);
 			i++;
 			}
-		}, 3000);
+		else if(!showedLogo) {
+			$("<a href='https://github.com/JayTheDonkey/rpg.java' target='_blank' id='github'><img src='github.png' /></a>").insertAfter("div:last-child");
+			showedLogo = true;
+			window.scrollTo(0,document.body.scrollHeight);
+			$('html,body').animate({
+				scrollTop: document.body.scrollHeight
+				}, 1000);
+			}
+		}, 2500);
 	});

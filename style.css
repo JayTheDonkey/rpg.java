@@ -17,16 +17,61 @@ main {
 .human {
   color: #ccc; }
   .human a {
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(1.15em, rgba(34, 34, 34, 0)), color-stop(1.15em, #ccc), color-stop(1.19em, #ccc), color-stop(1.19em, rgba(34, 34, 34, 0)));
+    background-image: -webkit-linear-gradient(top, rgba(34, 34, 34, 0) 1.15em, #ccc 1.15em, #ccc 1.19em, rgba(34, 34, 34, 0) 1.19em);
+    background-image: linear-gradient(top, rgba(34, 34, 34, 0) 1.15em, #ccc 1.15em, #ccc 1.19em, rgba(34, 34, 34, 0) 1.19em);
+    display: inline-block;
+    -webkit-background-size: 2px 2em;
+    background-size: 2px 2em;
+    background-repeat: repeat-x;
+    text-decoration: none;
+    text-shadow: 2px 2px 0px #222, 2px -2px 0px #222, -2px 2px 0px #222, -2px -2px 0px #222, 0px 2px 0px #222, 0px -2px 0px #222;
     color: #ccc; }
     .human a:hover {
+      background-image: -webkit-gradient(linear, left top, left bottom, color-stop(1.15em, rgba(34, 34, 34, 0)), color-stop(1.15em, #ffffff), color-stop(1.19em, #ffffff), color-stop(1.19em, rgba(34, 34, 34, 0)));
+      background-image: -webkit-linear-gradient(top, rgba(34, 34, 34, 0) 1.15em, #ffffff 1.15em, #ffffff 1.19em, rgba(34, 34, 34, 0) 1.19em);
+      background-image: linear-gradient(top, rgba(34, 34, 34, 0) 1.15em, #ffffff 1.15em, #ffffff 1.19em, rgba(34, 34, 34, 0) 1.19em);
+      display: inline-block;
+      -webkit-background-size: 2px 2em;
+      background-size: 2px 2em;
+      background-repeat: repeat-x;
+      text-decoration: none;
+      text-shadow: 2px 2px 0px #222, 2px -2px 0px #222, -2px 2px 0px #222, -2px -2px 0px #222, 0px 2px 0px #222, 0px -2px 0px #222;
       color: white; }
 
 .server {
   color: #999;
   margin-left: auto; }
   .server a {
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(1.15em, rgba(34, 34, 34, 0)), color-stop(1.15em, #999), color-stop(1.19em, #999), color-stop(1.19em, rgba(34, 34, 34, 0)));
+    background-image: -webkit-linear-gradient(top, rgba(34, 34, 34, 0) 1.15em, #999 1.15em, #999 1.19em, rgba(34, 34, 34, 0) 1.19em);
+    background-image: linear-gradient(top, rgba(34, 34, 34, 0) 1.15em, #999 1.15em, #999 1.19em, rgba(34, 34, 34, 0) 1.19em);
+    display: inline-block;
+    -webkit-background-size: 2px 2em;
+    background-size: 2px 2em;
+    background-repeat: repeat-x;
+    text-decoration: none;
+    text-shadow: 2px 2px 0px #222, 2px -2px 0px #222, -2px 2px 0px #222, -2px -2px 0px #222, 0px 2px 0px #222, 0px -2px 0px #222;
     color: #999; }
     .server a:hover {
+      background-image: -webkit-gradient(linear, left top, left bottom, color-stop(1.15em, rgba(34, 34, 34, 0)), color-stop(1.15em, #ccc), color-stop(1.19em, #ccc), color-stop(1.19em, rgba(34, 34, 34, 0)));
+      background-image: -webkit-linear-gradient(top, rgba(34, 34, 34, 0) 1.15em, #ccc 1.15em, #ccc 1.19em, rgba(34, 34, 34, 0) 1.19em);
+      background-image: linear-gradient(top, rgba(34, 34, 34, 0) 1.15em, #ccc 1.15em, #ccc 1.19em, rgba(34, 34, 34, 0) 1.19em);
+      display: inline-block;
+      -webkit-background-size: 2px 2em;
+      background-size: 2px 2em;
+      background-repeat: repeat-x;
+      text-decoration: none;
+      text-shadow: 2px 2px 0px #222, 2px -2px 0px #222, -2px 2px 0px #222, -2px -2px 0px #222, 0px 2px 0px #222, 0px -2px 0px #222;
       color: #ccc; }
 
-/*# sourceMappingURL=style.css.map */
+#github {
+  display: block;
+  width: 100%; }
+  #github img {
+    display: block;
+    margin: auto;
+    width: 120px; }
+
+::-webkit-scrollbar {
+  display: none; }

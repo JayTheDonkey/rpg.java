@@ -1,3 +1,23 @@
+@mixin underline($pos, $width, $color, $bg) {
+	background-image: linear-gradient(top,
+    rgba($bg, 0) $pos,
+    $color $pos,
+    $color $pos+$width,
+    rgba($bg, 0) $pos+$width
+    );
+  display: inline-block;
+  background-size: 2px 2em;
+  background-repeat: repeat-x;
+	text-decoration: none;
+  text-shadow:
+   2px  2px 0px $bg,
+   2px -2px 0px $bg,
+  -2px  2px 0px $bg,
+  -2px -2px 0px $bg,
+   0px  2px 0px $bg,
+   0px -2px 0px $bg;
+	}
+
 html, body {
 	margin: 0;
 	padding: 0;
@@ -20,8 +40,10 @@ main {
 .human {
 	color: #ccc;
 	a {
+		@include underline(1.15em, 0.04em, #ccc, #222);
 		color: #ccc;
 		&:hover {
+			@include underline(1.15em, 0.04em, white, #222);
 			color: white;
 			}
 		}
@@ -31,21 +53,25 @@ main {
 	color: #999;
 	margin-left: auto;
 	a {
+		@include underline(1.15em, 0.04em, #999, #222);
 		color: #999;
 		&:hover {
+		@include underline(1.15em, 0.04em, #ccc, #222);
 			color: #ccc;
 			}
 		}
 	}
 
+#github {
+	display: block;
+	width: 100%;
+	img {
+		display: block;
+		margin: auto;
+		width: 120px;
+		}
+	}
+
 ::-webkit-scrollbar {
-	width: 8px;
-	}
-::-webkit-scrollbar-track {
-	background: transparent; 
-	border-radius: 5px;
-	}
-::-webkit-scrollbar-thumb {
-	border-radius: 5px;
-	background: gray;
+	display: none;
 	}
