@@ -19,10 +19,10 @@ public abstract class Creature {
   return name;
   }
 
- private String name;
- private Weapon[] weapons;
- private int defenseValue;
- private int agility;
- private int healRate;
- private int health;
+ protected String name;
+ protected Weapon[] weapons;
+ protected int defenseValue;
+ protected int agility;
+ protected int healRate;
+ protected int health;
  }
