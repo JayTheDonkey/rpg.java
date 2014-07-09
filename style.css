@@ -67,11 +67,13 @@ main {
 
 #github {
   display: block;
-  width: 100%; }
-  #github img {
-    display: block;
-    margin: auto;
-    width: 120px; }
+  margin: auto;
+  padding: 0.5em;
+  color: white;
+  text-decoration: none;
+  border: 1px solid white;
+  width: 12em;
+  text-align: center; }
 
 ::-webkit-scrollbar {
   display: none; }

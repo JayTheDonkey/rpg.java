@@ -40,7 +40,7 @@ $(document).ready(function() {
 		"What is OOP? because if you think I'm one of those crazy people who likes Ally Oop, you must be more idiotic than I thought",
 		"no, it stands for <a href='http://en.wikipedia.org/wiki/Object-oriented_programming' target='_blank'>Object Oriented Programming</a>",
 		"what language is it written in? BASIC?",
-		"don't make me laugh. it's good old fashioned C++",
+		"don't make me laugh. it's good old fashioned Java",
 		"why am I still talking to you?",
 		"don't ask me",
 		"then I won't"
@@ -64,7 +64,7 @@ $(document).ready(function() {
 			i++;
 			}
 		else if(!showedLogo) {
-			$("<a href='https://github.com/JayTheDonkey/rpg.java' target='_blank' id='github'><img src='github.png' /></a>").insertAfter("div:last-child");
+			$("<a href='https://github.com/JayTheDonkey/rpg.java' target='_blank' id='github'>View Project on Github</a>").insertAfter("div:last-child");
 			showedLogo = true;
 			window.scrollTo(0,document.body.scrollHeight);
 			$('html,body').animate({
