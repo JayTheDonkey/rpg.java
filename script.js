@@ -9,7 +9,7 @@ $(document).ready(function() {
 		"can I help you?",
 		"I was led to believe this was the homepage for a game",
 		"well, maybe this is a game",
-		"no its not!",
+		"no it's not!",
 		"sure it is! it's part of a complex sociological experiment",
 		"I wasn't led to believe it was that sort of game...",
 		"oh, well then maybe this isn't a game",
