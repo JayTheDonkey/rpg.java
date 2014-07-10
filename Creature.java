@@ -13,6 +13,9 @@ public abstract class Creature {
    }
   return 0;
   }
+ public int getHealth(){
+   return health;
+ }
 
  // this function will be called whenever you try to print this object
  public String toString() {

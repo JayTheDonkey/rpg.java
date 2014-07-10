@@ -15,6 +15,6 @@ class RPG {
   CombatNode node = new CombatNode(special, normal);
   node.startCombat();
   ArrayList<Monster> monsters = node.monsterList();
-  CleanUp.printMonsters(monsters);
+  utils.printArray(monsters);
   }
  }
