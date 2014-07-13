@@ -16,6 +16,15 @@ public abstract class Creature {
  public int getHealth(){
    return health;
  }
+ public int takeDamage(int damage){
+   health -= Math.abs(damage);
+   return health;
+ }
+ public int heal(){
+   health += healRate;
+   return health;
+ }
+   
 
  // this function will be called whenever you try to print this object
  public String toString() {

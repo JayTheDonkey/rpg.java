@@ -1,8 +1,9 @@
 public class Weapon {
- public Weapon(int tempDice, int tempAdds, boolean tempRanged) {
+ public Weapon(String tempName, int tempDice, int tempAdds, boolean tempRanged) {
   dice = tempDice;
   adds = tempAdds;
   ranged = tempRanged;
+  name = tempName;
   }
 
  public int damage() {
@@ -12,7 +13,7 @@ public class Weapon {
    }
   return diceTotal + adds;
   }
-
+ private String name;
  private int dice;
  private int adds;
  public boolean ranged;

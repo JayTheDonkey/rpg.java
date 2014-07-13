@@ -1,12 +1,15 @@
 import java.util.ArrayList;
 
 public class CombatNode extends Node {
-  public CombatNode(ArrayList<Monster> tempListSpecial, ArrayList<Monster> tempListNormal) {
+  public CombatNode(ArrayList<Monster> tempListSpecial, ArrayList<Monster> tempListNormal, int tempMinMonsters, int tempMaxMonsters, Node tempNext) {
     listSpecial = tempListSpecial;
     listNormal = tempListNormal;
+    minMonsters = tempMinMonsters;
+    maxMonsters = tempMaxMonsters;
+    next = tempNext;
     }
   public void startCombat(){
-    enemies = utils.random(7,16); //make a good enemy number generator
+    enemies = utils.random(minMonsters, maxMonsters); //make a good enemy number generator
     normalMonsters = (int)(enemies * .85);
     specialMonsters = (int)(enemies - normalMonsters);
   }
@@ -41,11 +44,18 @@ public class CombatNode extends Node {
   public int giveXP (int monsterRating){ //monsterRating should be the average monsterRating of the monsters in the combat
     return ( monsterRating * enemies );
   }
+  
+  public Node getNext() {
+    return next;
+  }
+  
   private int enemies = 0;
   private int normalMonsters = 0;
   private int specialMonsters = 0;
+  private int minMonsters, maxMonsters;
   private ArrayList<Monster> listSpecial;
   private ArrayList<Monster> listNormal;
+  private Node next;
 }
 
 

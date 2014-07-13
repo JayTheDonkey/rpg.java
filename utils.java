@@ -19,7 +19,7 @@ public class utils {
     System.out.println(phrase);
     return phrase;
   }
-  public static void printArray(ArrayList<Monster> monsters){
+  public static void printMonsters(ArrayList<Monster> monsters){
     ArrayList<String> monsterNames = new ArrayList<String>();
     for (int i = 0; i < monsters.size(); i++){
       monsterNames.add((monsters.get(i).toString()));
