@@ -13,14 +13,14 @@ class RPG {
  }
  public static void main(String[] args) {
   ArrayList<Monster> normal = new ArrayList<Monster>();
-  normal.add(new Monster("Skeleton", new Weapon[]{new Weapon("Rusty Sword",3, 6, false)}, 6, 4, 0, 15));
-  normal.add(new Monster("Skeleton Archer", new Weapon[]{new Weapon("Rotten Bow",3, 6, true)}, 6, 4, 0, 17));
-  normal.add(new Monster("Zombie", new Weapon[]{new Weapon("Jagged Talons",3, 6, false)}, 6, 2, 0, 20));
+  normal.add(MakeMonster.skeleton());
+  normal.add(MakeMonster.skeletonArcher());
+  normal.add(MakeMonster.zombie());
 
   ArrayList<Monster> special = new ArrayList<Monster>();
-  special.add(new Monster("Armoured Skeleton", new Weapon[]{new Weapon("Axe",3, 6, false)}, 10, 4, 0, 25));
-  special.add(new Monster("Flame Archer", new Weapon[]{new Weapon("Enchanted Bow",6, 6, true)}, 6, 4, 0, 20));
-  special.add(new Monster("Skeletal Wizard", new Weapon[]{new Weapon("Magic Staff",5, 2, true)}, 2, 2, 0, 30));
+  special.add(MakeMonster.armouredSkeleton());
+  special.add(MakeMonster.flameArcher());
+  special.add(MakeMonster.skeletalWizard());
   
   Player human = new Player("Seal Clubber", "Jarrel", new Weapon[]{new Weapon("Club",3, 6, false)}, 9001, 1, 0);
   System.out.println(human);
