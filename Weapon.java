@@ -1,8 +1,7 @@
-public class Weapon {
- public Weapon(String tempName, int tempDice, int tempAdds, boolean tempRanged) {
+public abstract class Weapon {
+ public Weapon(String tempName, int tempDice, int tempAdds) {
   dice = tempDice;
   adds = tempAdds;
-  ranged = tempRanged;
   name = tempName;
   }
  public String toString() {
@@ -18,5 +17,4 @@ public class Weapon {
  private String name;
  private int dice;
  private int adds;
- private boolean ranged;
 }

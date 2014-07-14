@@ -1,43 +1,62 @@
 public abstract class Creature {
- public Creature(String tempName, Weapon[] tempWeapons, int tempHealth, int tempDefenseValue, int tempAgility, int tempHealRate) {
+ public Creature(String tempName, MeleeWeapon[] tempMeleeWeapons, RangedWeapon[] tempRangedWeapons, int tempHealth, int tempDefenseValue, int tempAgility, int tempHealRate) {
   name = tempName;
-  weapons = tempWeapons;
+  meleeWeapons = tempMeleeWeapons;
+  rangedWeapons = tempRangedWeapons;
   health = tempHealth;
   defenseValue = tempDefenseValue;
   agility = tempAgility;
   healRate = tempHealRate;
   }
-
- public int dealDamage(int weaponNumber) {
-  if(weaponNumber >= 0 && weaponNumber < weapons.length) {
-   return weapons[weaponNumber].damage();
+ public int dealMeleeDamage(int weaponNumber) {
+  if(weaponNumber >= 0 && weaponNumber < meleeWeapons.length) {
+   return meleeWeapons[weaponNumber].damage();
+   }
+  return 0;
+  }
+ public int dealRangedDamage(int weaponNumber) {
+  if(weaponNumber >= 0 && weaponNumber < rangedWeapons.length) {
+   return rangedWeapons[weaponNumber].damage();
    }
   return 0;
   }
  public int getHealth(){
    return health;
  }
- public Weapon getWeapon(int position){
-   if(position >= 0 && position < weapons.length) {
-     return weapons[position];
+ public Weapon getMeleeWeapon(int position){
+   if(position >= 0 && position < meleeWeapons.length) {
+     return meleeWeapons[position];
      }
    return null;
  }
- public int numberOfWeapons() {
-   return weapons.length;
+ public Weapon getRangedWeapon(int position){
+   if(position >= 0 && position < rangedWeapons.length) {
+     return rangedWeapons[position];
+     }
+   return null;
  }
+ public int numberOfMeleeWeapons() {
+   return meleeWeapons.length;
+ }
+ public int numberOfRangedWeapons() {
+   return rangedWeapons.length;
+ }
+ // returns amount of damage actually taken
  public int takeDamage(int damage){
    damage = Math.abs(damage) - defenseValue;
    if(damage > 0) {
     health -= damage;
+    return damage;
     }
-   return health;
+   return -1;
  }
  public int heal(){
    health += healRate;
-   return health;
+   return healRate;
  }
-   
+ public int getAgility() {
+   return agility;
+   }
 
  // this function will be called whenever you try to print this object
  public String toString() {
@@ -45,7 +64,8 @@ public abstract class Creature {
   }
 
  protected String name;
- protected Weapon[] weapons;
+ protected MeleeWeapon[] meleeWeapons;
+ protected RangedWeapon[] rangedWeapons;
  protected int defenseValue;
  protected int agility;
  protected int healRate;
