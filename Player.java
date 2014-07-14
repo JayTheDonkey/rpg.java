@@ -1,6 +1,6 @@
 public class Player extends Creature {
-  public Player(String tempclassName, String tempName, Weapon[] tempWeapons, int tempDefenseValue, int tempAgility, int tempHealRate){
-    super(tempName, tempWeapons,tempDefenseValue,  tempAgility, tempHealRate);
+  public Player(String tempclassName, String tempName, Weapon[] tempWeapons, int tempHealth, int tempDefenseValue, int tempAgility, int tempHealRate){
+    super(tempName, tempWeapons, tempHealth, tempDefenseValue,  tempAgility, tempHealRate);
     className = tempclassName;
   }
    public String toString() {

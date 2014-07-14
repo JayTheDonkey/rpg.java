@@ -1,7 +1,8 @@
 public abstract class Creature {
- public Creature(String tempName, Weapon[] tempWeapons, int tempDefenseValue, int tempAgility, int tempHealRate) {
+ public Creature(String tempName, Weapon[] tempWeapons, int tempHealth, int tempDefenseValue, int tempAgility, int tempHealRate) {
   name = tempName;
   weapons = tempWeapons;
+  health = tempHealth;
   defenseValue = tempDefenseValue;
   agility = tempAgility;
   healRate = tempHealRate;
@@ -16,11 +17,20 @@ public abstract class Creature {
  public int getHealth(){
    return health;
  }
- public String getWeapon(){
-   return weapons.toString();
+ public Weapon getWeapon(int position){
+   if(position >= 0 && position < weapons.length) {
+     return weapons[position];
+     }
+   return null;
+ }
+ public int numberOfWeapons() {
+   return weapons.length;
  }
  public int takeDamage(int damage){
-   health -= Math.abs(damage);
+   damage = Math.abs(damage) - defenseValue;
+   if(damage > 0) {
+    health -= damage;
+    }
    return health;
  }
  public int heal(){

@@ -15,7 +15,11 @@ public class utils {
       System.out.println(": "+ menu.get(i));
     }
     int choice = scan.nextInt();
-      return choice;
+    while(choice < 1 || choice > menu.size()) {
+      print("please enter a valid number");
+      choice = scan.nextInt();
+      }
+    return choice - 1;
   }
   public static int random(int min, int max){
     return (int) (Math.random() * (max - min) + min);

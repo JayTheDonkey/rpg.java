@@ -8,13 +8,7 @@ public class PlayerDecisionNode extends DecisionNode {
   }
   
   public Node getNext() {
-    int length = Math.min(nextNodes.size(), menu.size());
-    for(int i = 0; i < length; i++) {
-      System.out.print(i + 1);
-      System.out.println(": " + menu.get(i));
-      }
-    int choice = scan.nextInt();
-    return nextNodes.get(choice - 1);
+    return nextNodes.get(utils.menu(menu) - 1);
     }
   
   private ArrayList<String> menu;
