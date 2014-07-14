@@ -5,7 +5,9 @@ public class Weapon {
   ranged = tempRanged;
   name = tempName;
   }
-
+ public String toString() {
+  return name;
+  }
  public int damage() {
   int diceTotal = 0;
   for(int i = 0; i < dice; i++) {
@@ -16,5 +18,5 @@ public class Weapon {
  private String name;
  private int dice;
  private int adds;
- public boolean ranged;
+ private boolean ranged;
 }

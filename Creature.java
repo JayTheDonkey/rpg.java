@@ -16,6 +16,9 @@ public abstract class Creature {
  public int getHealth(){
    return health;
  }
+ public String getWeapon(){
+   return weapons.toString();
+ }
  public int takeDamage(int damage){
    health -= Math.abs(damage);
    return health;

@@ -8,12 +8,17 @@ public class utils {
     Thread.currentThread().interrupt();
     }
   }
+  public static int menu(ArrayList<String> menu){
+    Scanner scan = new Scanner(System.in);
+    for(int i = 0; i < menu.size(); i++){
+      System.out.print(i + 1);
+      System.out.println(": "+ menu.get(i));
+    }
+    int choice = scan.nextInt();
+      return choice;
+  }
   public static int random(int min, int max){
     return (int) (Math.random() * (max - min) + min);
-  }
-  public static boolean choice(Scanner scan){
-    String choice = scan.nextLine().toLowerCase();
-    return (choice.equals("yes")||choice.equals("y"));
   }
   public static String print(String phrase){
     System.out.println(phrase);
