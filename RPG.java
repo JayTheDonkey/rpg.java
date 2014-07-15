@@ -25,7 +25,7 @@ class RPG {
       }
     return returnMonsters;
     }
- 
+
  // returns false if player is dead
  public static boolean hitHealPlayer(Player p, ArrayList<Monster> monsters, boolean atRange) {
    int damage = 0;
@@ -78,7 +78,7 @@ class RPG {
      }
    return(p.getHealth() > 0);
    }
- 
+
  // returns false if there are no monsters
  public static boolean hitHealMonster(Player p, ArrayList<Monster> monsters, int whichMonster, boolean atRange) {
    ArrayList<String> mWeapons = new ArrayList<String>();
@@ -89,7 +89,7 @@ class RPG {
    for(int i = 0; i < p.numberOfRangedWeapons(); i++) {
      rWeapons.add(p.getRangedWeapon(i).toString());
      }
-   
+
    utils.print("please select your weapon");
    int damage = 0;
    if(atRange) {
@@ -109,8 +109,7 @@ class RPG {
      }
    if(monsters.get(whichMonster).getHealth() <= 0) {
      System.out.print("good job! you killed a " + monsters.get(whichMonster) + " and got "+ monsters.get(whichMonster).getMonsterRating()+"xp!");
-     monsters.remove(whichMonster);
-     p.addXP(monsters.get(whichMonster).getMonsterRating());
+     p.addXP(monsters.remove(whichMonster).getMonsterRating());
      if(monsters.size() == 0) {
        utils.print("");
        return false;
@@ -123,7 +122,7 @@ class RPG {
      }
    return true;
    }
- 
+
  public static boolean combat(Player p, CombatNode node, boolean atRange){
    node.startCombat();
    ArrayList<Monster> monsters = node.monsterList();
@@ -205,22 +204,22 @@ class RPG {
          // nothing to see here
          break;
          }
-     
+
      if(!hitHealMonster(p, monsters, utils.random(0, monsters.size() - 1), atRange)) {
        return true;
        }
-     
+
      if(!hitHealPlayer(p, monsters, atRange)) {
        return false;
        }
      }
-  
+
    Node next = node.getNext();
    next = next.getNext();
    System.out.println(next);
    return true;
  }
- 
+
  public static void main(String[] args) {
   ArrayList<Monster> normal = new ArrayList<Monster>();
   normal.add(MakeMonster.skeleton());
@@ -231,7 +230,7 @@ class RPG {
   special.add(MakeMonster.armouredSkeleton());
   special.add(MakeMonster.flameArcher());
   special.add(MakeMonster.skeletalWizard());
-  
+
   Player human = new Player("Rogue", "Joe", new MeleeWeapon[]{MakeMeleeWeapon.sword("sneaky")}, new RangedWeapon[]{MakeRangedWeapon.crossbow("normal")}, 40, 20, 6, 0);
   System.out.println("you are a " + human);
   /*
@@ -244,7 +243,7 @@ class RPG {
   */
   EndNode ending = new EndNode("...the end");
   CombatNode node = new CombatNode(special, normal, 3, 8, ending);
-  
+
   if(combat(human, node, true)) {
     utils.print("good job! you won!");
     }
