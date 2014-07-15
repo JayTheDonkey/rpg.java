@@ -41,8 +41,11 @@ public class CombatNode extends Node {
     return (enemies + numSummoned);
   }
   //at the end of combat calculates and returns amount of xp the fight was worth
-  public int giveXP (int monsterRating){ //monsterRating should be the average monsterRating of the monsters in the combat
-    return ( monsterRating * enemies );
+  public int giveXP (ArrayList<Monster> monsters){ 
+    for(int i = 0; i < monsters.size(); i++){
+      xp += (monsters.get(i).getMonsterRating());
+    }
+    return xp;
   }
   
   public Node getNext() {
@@ -56,6 +59,7 @@ public class CombatNode extends Node {
   private ArrayList<Monster> listSpecial;
   private ArrayList<Monster> listNormal;
   private Node next;
+  private int xp = 0;
 }
 
 
