@@ -231,7 +231,7 @@ class RPG {
   special.add(MakeMonster.flameArcher());
   special.add(MakeMonster.skeletalWizard());
   
-  Player human = new Player("Rogue", "Joe", new MeleeWeapon[]{new MeleeWeapon("Sword", 3, 6)}, new RangedWeapon[]{new RangedWeapon("Crossbow", 4, 2)}, 40, 20, 6, 0);
+  Player human = new Player("Rogue", "Joe", new MeleeWeapon[]{MakeMeleeWeapon.sword("sneaky")}, new RangedWeapon[]{MakeRangedWeapon.crossbow("normal")}, 40, 20, 6, 0);
   System.out.println("you are a " + human);
   /*
   EndNode flee = new EndNode("You live happily ever after...Coward!");
