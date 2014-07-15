@@ -6,6 +6,12 @@ public class Player extends Creature {
    public String toString() {
   return ("Level " + level + " human " + className + " named " + name);
   }
+   public void addXP(int monsterXp){
+     xp += monsterXp;
+   }
+   public int getXP(){
+     return xp;
+   }
   private int xp = 0;
   private int level = 1;
   private String className;

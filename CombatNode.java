@@ -40,13 +40,7 @@ public class CombatNode extends Node {
   public int addEnemies(int numSummoned){
     return (enemies + numSummoned);
   }
-  //at the end of combat calculates and returns amount of xp the fight was worth
-  public int giveXP (ArrayList<Monster> monsters){ 
-    for(int i = 0; i < monsters.size(); i++){
-      xp += (monsters.get(i).getMonsterRating());
-    }
-    return xp;
-  }
+
   
   public Node getNext() {
     return next;
@@ -59,7 +53,6 @@ public class CombatNode extends Node {
   private ArrayList<Monster> listSpecial;
   private ArrayList<Monster> listNormal;
   private Node next;
-  private int xp = 0;
 }
 
 

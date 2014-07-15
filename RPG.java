@@ -108,8 +108,9 @@ class RPG {
      utils.print("unfortunately, the " + monsters.get(whichMonster) + " appears to have recovered a little");
      }
    if(monsters.get(whichMonster).getHealth() <= 0) {
-     System.out.print("good job! you killed a " + monsters.get(whichMonster) + "!");
+     System.out.print("good job! you killed a " + monsters.get(whichMonster) + " and got "+ monsters.get(whichMonster).getMonsterRating()+"xp!");
      monsters.remove(whichMonster);
+     p.addXP(monsters.get(whichMonster).getMonsterRating());
      if(monsters.size() == 0) {
        utils.print("");
        return false;
