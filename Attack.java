@@ -1,5 +1,5 @@
-public abstract class Weapon {
- public Weapon(String tempName, int tempDice, int tempAdds) {
+public abstract class Attack {
+ public Attack(String tempName, int tempDice, int tempAdds) {
   dice = tempDice;
   adds = tempAdds;
   name = tempName;
@@ -15,6 +15,5 @@ public abstract class Weapon {
   return diceTotal + adds;
   }
  private String name;
- private int dice;
- private int adds;
+ private int dice, adds;
 }
