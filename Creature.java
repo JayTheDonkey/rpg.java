@@ -18,14 +18,14 @@ public abstract class Creature {
 }
 
 public int dealMeleeDamage(int weaponNumber) {
-  if(weaponNumber >= 0 && weaponNumber < meleeWeapons.size()) {
-   return meleeWeapons.get(weaponNumber).damage();
+  if(weaponNumber >= 0 && weaponNumber < getUsableMeleeAttacks().size()) {
+   return getUsableMeleeAttacks().get(weaponNumber).damage(this);
   }
  return 0;
 }
 public int dealRangedDamage(int weaponNumber) {
-  if(weaponNumber >= 0 && weaponNumber < rangedWeapons.size()) {
-   return rangedWeapons.get(weaponNumber).damage();
+  if(weaponNumber >= 0 && weaponNumber < getUsableRangedAttacks().size()) {
+   return getUsableRangedAttacks().get(weaponNumber).damage(this);
   }
  return 0;
 }
@@ -35,6 +35,36 @@ public ArrayList<MeleeWeapon> getMeleeWeapons() {
 }
 public ArrayList<RangedWeapon> getRangedWeapons() {
   return rangedWeapons;
+}
+public ArrayList<Spell> getSpells() {
+  return spells;
+}
+public ArrayList<MeleeWeapon> getUsableMeleeAttacks() {
+  ArrayList<MeleeWeapon> returnList = new ArrayList<MeleeWeapon>();
+  for(int i = 0; i < meleeWeapons.size(); i++) {
+    if(meleeWeapons.get(i).canUse(this)) {
+      returnList.add(meleeWeapons.get(i));
+    }
+  }
+  if(returnList.size() == 0) {
+    returnList.add(MakeMeleeWeapon.rock("normal"));
+  }
+  return returnList;
+}
+public ArrayList<RangedAttack> getUsableRangedAttacks() {
+  ArrayList<RangedAttack> rangedAttacks = new ArrayList<RangedAttack>();
+  rangedAttacks.addAll(rangedWeapons);
+  rangedAttacks.addAll(spells);
+  ArrayList<RangedAttack> returnList = new ArrayList<RangedAttack>();
+  for(int i = 0; i < rangedAttacks.size(); i++) {
+    if(rangedAttacks.get(i).canUse(this)) {
+      returnList.add(rangedAttacks.get(i));
+    }
+  }
+  if(returnList.size() == 0) {
+    returnList.add(MakeRangedWeapon.rock("normal"));
+  }
+  return returnList;
 }
 
 public int getStrength() {
@@ -52,11 +82,18 @@ public int getSpeed() {
 public int getWizardry() {
   return wizardry;
 }
+public int getIntelligence() {
+  return intelligence;
+}
 public int getDefenseValue() {
   return defenseValue;
 }
 public int getHealRate() {
   return healRate;
+}
+
+public int castSpell(int wizCost) {
+  return (wizardry -= wizCost);
 }
 
  // returns amount of damage actually taken

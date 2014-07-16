@@ -32,15 +32,15 @@ class RPG {
    utils.print("you are attacked by");
    if(atRange) {
        for(int i = 0; i < monsters.size(); i++) {
-         int weaponNumber = utils.random(0, monsters.get(i).getRangedWeapons().size() - 1);
-         System.out.println("a " + monsters.get(i) + " with " + monsters.get(i).getRangedWeapons().get(weaponNumber));
+         int weaponNumber = utils.random(0, monsters.get(i).getUsableRangedAttacks().size() - 1);
+         System.out.println("a " + monsters.get(i) + " with " + monsters.get(i).getUsableRangedAttacks().get(weaponNumber));
          damage += monsters.get(i).dealRangedDamage(weaponNumber);
          }
        }
      else {
        for(int i = 0; i < monsters.size(); i++) {
-         int weaponNumber = utils.random(0, monsters.get(i).getMeleeWeapons().size() - 1);
-         System.out.println("a " + monsters.get(i) + " with " + monsters.get(i).getMeleeWeapons().get(weaponNumber));
+         int weaponNumber = utils.random(0, monsters.get(i).getUsableMeleeAttacks().size() - 1);
+         System.out.println("a " + monsters.get(i) + " with " + monsters.get(i).getUsableMeleeAttacks().get(weaponNumber));
          damage += monsters.get(i).dealMeleeDamage(weaponNumber);
          }
        }
@@ -63,7 +63,7 @@ class RPG {
        utils.print("you enemies are even more skilled than you, for they deal you not 1 point of damage!");
        }
      else {
-       utils.print("your foe is a worthy opponent, for he just dealt you a whopping no damage!");
+       utils.print("your foe is a worthy opponent, for he just dealt you a whopping 0 damage!");
        }
      }
    int healed = p.heal();
@@ -81,34 +81,37 @@ class RPG {
 
  // returns false if there are no monsters
  public static boolean hitHealMonster(Player p, ArrayList<Monster> monsters, int whichMonster, boolean atRange) {
-   ArrayList<String> mWeapons = new ArrayList<String>();
-   for(int i = 0; i < p.getMeleeWeapons().size(); i++) {
-     mWeapons.add(p.getMeleeWeapons().get(i).toString());
+   ArrayList<String> rAttacks = new ArrayList<String>();
+   for(int i = 0; i < p.getUsableRangedAttacks().size(); i++) {
+     rAttacks.add(p.getUsableRangedAttacks().get(i).toString());
      }
-   ArrayList<String> rWeapons = new ArrayList<String>();
-   for(int i = 0; i < p.getRangedWeapons().size(); i++) {
-     rWeapons.add(p.getRangedWeapons().get(i).toString());
+   ArrayList<String> mAttacks = new ArrayList<String>();
+   for(int i = 0; i < p.getUsableMeleeAttacks().size(); i++) {
+     mAttacks.add(p.getUsableMeleeAttacks().get(i).toString());
      }
 
    utils.print("please select your weapon");
    int damage = 0;
    if(atRange) {
-     damage = p.dealRangedDamage(utils.menu(rWeapons));
+     damage = p.dealRangedDamage(utils.menu(rAttacks));
      }
    else {
-     damage = p.dealMeleeDamage(utils.menu(mWeapons));
+     damage = p.dealMeleeDamage(utils.menu(mAttacks));
      }
    System.out.println("you hit a " + monsters.get(whichMonster) + " for " + damage + " damage.");
    int taken = monsters.get(whichMonster).takeDamage(damage);
    if(taken > 0) {
      utils.print("their armour can not completely shield them and they take damage");
      }
+   else {
+    utils.print("alas, their defenses are too strong! you do not get through");
+     }
    int healed = monsters.get(whichMonster).heal();
    if(healed > 0) {
      utils.print("unfortunately, the " + monsters.get(whichMonster) + " appears to have recovered a little");
      }
    if(monsters.get(whichMonster).getConstitution() <= 0) {
-     System.out.print("good job! you killed a " + monsters.get(whichMonster) + " and got "+ monsters.get(whichMonster).getMonsterRating()+"xp!");
+     System.out.print("good job! you killed a " + monsters.get(whichMonster) + " and got " + monsters.get(whichMonster).getMonsterRating()+"xp!");
      p.addXP(monsters.remove(whichMonster).getMonsterRating());
      if(monsters.size() == 0) {
        utils.print("");
@@ -231,8 +234,8 @@ class RPG {
   special.add(MakeMonster.flameArcher());
   special.add(MakeMonster.skeletalWizard());
 
-  Player human = new Player("Rogue", "Joe", new MeleeWeapon[]{MakeMeleeWeapon.shortSword("sneaky")}, new RangedWeapon[]{MakeRangedWeapon.crossbow("normal")}, new Spell[]{MakeSpell.frostBurn("annoying")}, 15, 13, 18, 12, 14, 8, 10, 7, 20, 0);
-  System.out.println("you are a " + human);
+  Player human = new Player("Rogue", "Joe", new MeleeWeapon[]{MakeMeleeWeapon.rapier("sneaky"), MakeMeleeWeapon.dirk("eating")}, new RangedWeapon[]{MakeRangedWeapon.crossbow("normal"), MakeRangedWeapon.rock("boring")}, new Spell[]{MakeSpell.frostBurn("annoying")}, 15, 13, 18, 12, 14, 8, 10, 7, 20, 0);
+  System.out.println("you are " + human);
   /*
   EndNode flee = new EndNode("You live happily ever after...Coward!");
   EndNode fight = new EndNode("And then you died...");

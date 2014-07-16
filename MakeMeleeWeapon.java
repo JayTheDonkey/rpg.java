@@ -77,6 +77,9 @@ public class MakeMeleeWeapon {
 	public static MeleeWeapon fists(String descriptor) {
 		return new MeleeWeapon(descriptor + " fists", 1, 0, 0, 0);
 	}
+	public static MeleeWeapon rock(String descriptor) {
+		return new MeleeWeapon("a " + descriptor + " rock", 1, 0, 0, 0);
+	}
 	public static MeleeWeapon staff(String descriptor) {
 		return new MeleeWeapon("a " + descriptor + " staff", 2, 0, 10, 8);
 	}

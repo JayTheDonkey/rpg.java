@@ -10,8 +10,8 @@ public class MeleeWeapon extends Attack {
 	public int getMinDex() {
 		return minDex;
 	}
-	public boolean canUse(int dex, int str) {
-		return (str >= minStr && dex >= minDex);
+	public boolean canUse(Creature c) {
+		return (c.getStrength() >= minStr && c.getDexterity() >= minDex);
 	}
  private int minDex, minStr;
 }

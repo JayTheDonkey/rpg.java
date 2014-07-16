@@ -3,17 +3,21 @@ public abstract class Attack {
   dice = tempDice;
   adds = tempAdds;
   name = tempName;
-  }
- public String toString() {
+}
+public String toString() {
   return name;
+}
+public abstract boolean canUse(Creature c);
+public int damage(Creature c) {
+  if(canUse(c)) {
+    int diceTotal = 0;
+    for(int i = 0; i < dice; i++) {
+      diceTotal += utils.random(1, 6);
+    }
+    return diceTotal + adds;
   }
- public int damage() {
-  int diceTotal = 0;
-  for(int i = 0; i < dice; i++) {
-   diceTotal += utils.random(1, 6);
-   }
-  return diceTotal + adds;
-  }
- private String name;
- private int dice, adds;
+  return 0;
+}
+private String name;
+private int dice, adds;
 }

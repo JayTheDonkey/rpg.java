@@ -8,6 +8,7 @@ NC='\e[0m' # No Color
 
 if [[ $# == 1 ]]; then
 	echo -e "\n${green}********************************\n* Uploading new code to Github *\n********************************${NC}\n"
+	rm *.java~
 	git add --all
 	git commit -m "$1"
 	git push

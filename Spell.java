@@ -1,4 +1,4 @@
-public class Spell extends Attack {
+public class Spell extends RangedAttack {
 	public Spell(String tempName, int tempDice, int tempAdds, int tempMinInt, int tempWizCost) {
 		super(tempName, tempDice, tempAdds);
 		minInt = tempMinInt;
@@ -10,8 +10,14 @@ public class Spell extends Attack {
 	public int getWizCost() {
 		return wizCost;
 	}
-	public boolean canUse(int intelligence, int wizardry) {
-		return (intelligence >= minInt && wizardry >= wizCost);
+	public int damage(Creature c) {
+		if(canUse(c)) {
+			c.castSpell(wizCost);
+		}
+		return super.damage(c);
+	}
+	public boolean canUse(Creature c) {
+		return (c.getIntelligence() >= minInt && c.getWizardry() >= wizCost);
 	}
  private int minInt, wizCost;
 }
