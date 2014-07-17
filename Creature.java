@@ -112,6 +112,10 @@ public String toString() {
   return name;
 }
 
+public String toPluralString() {
+  return name + "s";
+}
+
 protected String name;
 protected ArrayList<MeleeWeapon> meleeWeapons;
 protected ArrayList<RangedWeapon> rangedWeapons;

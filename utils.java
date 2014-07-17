@@ -3,18 +3,19 @@ import java.util.ArrayList;
 public class utils {
   public static void sleep(int milliseconds) {
     try {
-    Thread.sleep(milliseconds);
+      Thread.sleep(milliseconds);
     } catch(InterruptedException ex) {
-    Thread.currentThread().interrupt();
+      Thread.currentThread().interrupt();
     }
   }
-  public static int menu(ArrayList<String> menu){
+  public static int menu(String question, ArrayList<String> menu){
     if(menu.size() <= 0) {
       return -1;
     }
     else if(menu.size() == 1) {
       return 0;
     }
+    print(question);
     Scanner scan = new Scanner(System.in);
     for(int i = 0; i < menu.size(); i++){
       System.out.print(i + 1);
@@ -24,7 +25,7 @@ public class utils {
     while(choice < 1 || choice > menu.size()) {
       print("please enter a valid number");
       choice = scan.nextInt();
-      }
+    }
     return choice - 1;
   }
   public static int random(int min, int max){
@@ -35,34 +36,70 @@ public class utils {
     return phrase;
   }
   public static void printMonsters(ArrayList<Monster> monsters){
-    ArrayList<String> monsterNames = new ArrayList<String>();
+    ArrayList<String[]> monsterNames = new ArrayList<String[]>();
     for (int i = 0; i < monsters.size(); i++){
-      monsterNames.add((monsters.get(i).toString()));
+      monsterNames.add(new String[]{monsters.get(i).toString(), monsters.get(i).toPluralString()});
     }
-    ArrayList<String> names = new ArrayList<String>();
-       ArrayList<Integer> number = new ArrayList<Integer>();
-       while(monsterNames.size() > 0) {
-           String current = monsterNames.remove(0);
-           boolean exists = false;
-           for(int i = 0; i < names.size(); i++) {
-               if(names.get(i).equals(current)) {
-                   number.set(i, number.get(i) + 1);
-                   exists = true;
-                   }
-               }
-           if(!exists) {
-               names.add(current);
-               number.add(1);
-               }
-           }
-
-       for(int j = 0; j < names.size(); j++) {
-           if(number.get(j) == 1) {
-               System.out.println("1 " + names.get(j));
-               }
-           else {
-               System.out.println(Integer.toString(number.get(j)) + " " + names.get(j) + "s");
-               }
-           }
+    ArrayList<String[]> names = new ArrayList<String[]>();
+    ArrayList<Integer> number = new ArrayList<Integer>();
+    while(monsterNames.size() > 0) {
+     String[] current = monsterNames.remove(0);
+     boolean exists = false;
+     for(int i = 0; i < names.size(); i++) {
+       if(names.get(i)[0].equals(current[0])) {
+         number.set(i, number.get(i) + 1);
+         exists = true;
        }
+     }
+     if(!exists) {
+       names.add(current);
+       number.add(1);
+     }
+   }
+
+   for(int j = 0; j < names.size(); j++) {
+     if(number.get(j) == 1) {
+       System.out.println("1 " + names.get(j)[0]);
+     }
+     else {
+       System.out.println(Integer.toString(number.get(j)) + " " + names.get(j)[1]);
+     }
+   }
+ }
+ public static void printMonstersAndWeapons(ArrayList<Monster> monsters, ArrayList<Attack> weapons){
+    ArrayList<String[]> monsterNames = new ArrayList<String[]>();
+    ArrayList<String[]> weaponNames = new ArrayList<String[]>();
+    for (int i = 0; i < monsters.size(); i++){
+      monsterNames.add(new String[]{monsters.get(i).toString(), monsters.get(i).toPluralString()});
+      weaponNames.add(new String[]{weapons.get(i).toString(), weapons.get(i).toPluralString()});
+    }
+    ArrayList<String[]> uniqueMonsters = new ArrayList<String[]>();
+    ArrayList<String[]> uniqueWeapons = new ArrayList<String[]>();
+    ArrayList<Integer> number = new ArrayList<Integer>();
+    while(monsterNames.size() > 0) {
+     String[] currentMonster = monsterNames.remove(0);
+     String[] currentWeapon = weaponNames.remove(0);
+     boolean exists = false;
+     for(int i = 0; i < uniqueMonsters.size(); i++) {
+       if(uniqueMonsters.get(i)[0].equals(currentMonster[0])) {
+         number.set(i, number.get(i) + 1);
+         exists = true;
+       }
+     }
+     if(!exists) {
+       uniqueMonsters.add(currentMonster);
+       uniqueWeapons.add(currentWeapon);
+       number.add(1);
+     }
+   }
+
+   for(int j = 0; j < number.size(); j++) {
+     if(number.get(j) == 1) {
+       System.out.println("1 " + uniqueMonsters.get(j)[0] + " with a " + uniqueWeapons.get(j)[0]);
+     }
+     else {
+       System.out.println(Integer.toString(number.get(j)) + " " + uniqueMonsters.get(j)[1] + " with " + uniqueWeapons.get(j)[1]);
+     }
+   }
+ }
 }

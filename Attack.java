@@ -1,11 +1,22 @@
 public abstract class Attack {
- public Attack(String tempName, int tempDice, int tempAdds) {
+ public Attack(String tempName, String tempDescriptor, boolean tempPlural, int tempDice, int tempAdds) {
   dice = tempDice;
   adds = tempAdds;
   name = tempName;
+  descriptor = tempDescriptor;
+  plural = tempPlural;
 }
 public String toString() {
-  return name;
+  if(plural) {
+    return toPluralString();
+  }
+  return "a " + descriptor + " " + name;
+}
+public String toPluralString() {
+  if(plural) {
+    return descriptor + " " + name;
+  }
+  return descriptor + " " + name + "s";
 }
 public abstract boolean canUse(Creature c);
 public Damage damage(Creature c) {
@@ -23,6 +34,7 @@ public Damage damage(Creature c) {
   }
   return new Damage(0, 0);
 }
-private String name;
+private String name, descriptor;
+private boolean plural;
 private int dice, adds;
 }

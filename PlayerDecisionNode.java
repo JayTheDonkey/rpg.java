@@ -6,11 +6,11 @@ public class PlayerDecisionNode extends DecisionNode {
     super(tempNextNodes);
     menu = tempMenu;
   }
-  
+
   public Node getNext() {
-    return nextNodes.get(utils.menu(menu) - 1);
+    return nextNodes.get(utils.menu("what would you like to do?", menu) - 1);
     }
-  
+
   private ArrayList<String> menu;
   Scanner scan = new Scanner(System.in);
 }
