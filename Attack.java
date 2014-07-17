@@ -14,7 +14,7 @@ public Damage damage(Creature c) {
     int spite = 0;
     int temp = 0;
     for(int i = 0; i < dice; i++) {
-      diceTotal += (temp = utils.random(1, 6));
+      diceTotal += (temp = utils.random(1, 7));
       if(temp == 6) {
         spite++;
       }

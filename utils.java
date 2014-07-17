@@ -9,6 +9,12 @@ public class utils {
     }
   }
   public static int menu(ArrayList<String> menu){
+    if(menu.size() <= 0) {
+      return -1;
+    }
+    else if(menu.size() == 1) {
+      return 0;
+    }
     Scanner scan = new Scanner(System.in);
     for(int i = 0; i < menu.size(); i++){
       System.out.print(i + 1);
@@ -49,7 +55,7 @@ public class utils {
                number.add(1);
                }
            }
-       
+
        for(int j = 0; j < names.size(); j++) {
            if(number.get(j) == 1) {
                System.out.println("1 " + names.get(j));
