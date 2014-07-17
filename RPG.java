@@ -28,26 +28,31 @@ class RPG {
 
  // returns false if player is dead
  public static boolean hitHealPlayer(Player p, ArrayList<Monster> monsters, boolean atRange) {
-   int damage = 0;
+   int blockable = 0;
+   int unblockable = 0;
    utils.print("you are attacked by");
    if(atRange) {
        for(int i = 0; i < monsters.size(); i++) {
          int weaponNumber = utils.random(0, monsters.get(i).getUsableRangedAttacks().size() - 1);
          System.out.println("a " + monsters.get(i) + " with " + monsters.get(i).getUsableRangedAttacks().get(weaponNumber));
-         damage += monsters.get(i).dealRangedDamage(weaponNumber);
+         Damage temp = monsters.get(i).dealRangedDamage(weaponNumber);
+         blockable += temp.getBlockable();
+         unblockable += temp.getUnblockable();
          }
        }
      else {
        for(int i = 0; i < monsters.size(); i++) {
          int weaponNumber = utils.random(0, monsters.get(i).getUsableMeleeAttacks().size() - 1);
          System.out.println("a " + monsters.get(i) + " with " + monsters.get(i).getUsableMeleeAttacks().get(weaponNumber));
-         damage += monsters.get(i).dealMeleeDamage(weaponNumber);
+         Damage temp = monsters.get(i).dealMeleeDamage(weaponNumber);
+         blockable += temp.getBlockable();
+         unblockable += temp.getUnblockable();
          }
        }
    int taken = 0;
-   if(damage > 0) {
-     System.out.println("you have " + damage + " damage coming your way");
-     taken = p.takeDamage(damage);
+   if(blockable + unblockable > 0) {
+     System.out.println("you have " + blockable + " damage and " + unblockable + " spite damage coming your way");
+     taken = p.takeDamage(new Damage(blockable, unblockable));
      if(taken == 1) {
        utils.print("you almost blocked that, but due to lack of skill you recieve 1 point of damage");
        }
@@ -91,14 +96,14 @@ class RPG {
      }
 
    utils.print("please select your weapon");
-   int damage = 0;
+   Damage damage;
    if(atRange) {
      damage = p.dealRangedDamage(utils.menu(rAttacks));
      }
    else {
      damage = p.dealMeleeDamage(utils.menu(mAttacks));
      }
-   System.out.println("you hit a " + monsters.get(whichMonster) + " for " + damage + " damage.");
+   System.out.println("you hit a " + monsters.get(whichMonster) + " for " + damage.getBlockable() + " damage and " + damage.getUnblockable() + " spite damage");
    int taken = monsters.get(whichMonster).takeDamage(damage);
    if(taken > 0) {
      utils.print("their armour can not completely shield them and they take damage");

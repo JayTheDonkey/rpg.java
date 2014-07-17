@@ -16,14 +16,14 @@ public class RangedWeapon extends RangedAttack {
 	public void replenish() {
 		used = 0;
 	}
-	public int damage(Creature c) {
-		if(canUse(c)) {
+	public Damage damage(Creature c) {
+		if(canUse(c) && uses > 0) {
 			used++;
 		}
 		return super.damage(c);
 	}
 	public boolean canUse(Creature c) {
-		return (c.getStrength() >= minStr && c.getDexterity() >= minDex && used < uses);
+		return (c.getStrength() >= minStr && c.getDexterity() >= minDex && (used < uses || uses <= 0));
 	}
  private int minDex, minStr;
  private int uses, used;

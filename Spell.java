@@ -10,11 +10,12 @@ public class Spell extends RangedAttack {
 	public int getWizCost() {
 		return wizCost;
 	}
-	public int damage(Creature c) {
+	public Damage damage(Creature c) {
 		if(canUse(c)) {
 			c.castSpell(wizCost);
 		}
-		return super.damage(c);
+		Damage temp = super.damage(c);
+		return new Damage(0, temp.getBlockable() + temp.getUnblockable());
 	}
 	public boolean canUse(Creature c) {
 		return (c.getIntelligence() >= minInt && c.getWizardry() >= wizCost);

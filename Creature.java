@@ -17,17 +17,17 @@ public abstract class Creature {
   healRate = tempHealRate;
 }
 
-public int dealMeleeDamage(int weaponNumber) {
+public Damage dealMeleeDamage(int weaponNumber) {
   if(weaponNumber >= 0 && weaponNumber < getUsableMeleeAttacks().size()) {
    return getUsableMeleeAttacks().get(weaponNumber).damage(this);
   }
- return 0;
+ return new Damage(0, 0);
 }
-public int dealRangedDamage(int weaponNumber) {
+public Damage dealRangedDamage(int weaponNumber) {
   if(weaponNumber >= 0 && weaponNumber < getUsableRangedAttacks().size()) {
    return getUsableRangedAttacks().get(weaponNumber).damage(this);
   }
- return 0;
+ return new Damage(0, 0);
 }
 
 public ArrayList<MeleeWeapon> getMeleeWeapons() {
@@ -97,13 +97,10 @@ public int castSpell(int wizCost) {
 }
 
  // returns amount of damage actually taken
-public int takeDamage(int damage){
- damage = Math.abs(damage) - defenseValue;
- if(damage > 0) {
-  constitution -= damage;
-  return damage;
-}
-return -1;
+public int takeDamage(Damage damage){
+  int taken = damage.getBlockable() - defenseValue + damage.getUnblockable();
+  constitution -= taken;
+  return taken;
 }
 public int heal(){
  constitution += healRate;
