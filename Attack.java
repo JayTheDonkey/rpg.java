@@ -1,10 +1,11 @@
 public abstract class Attack {
- public Attack(String tempName, String tempDescriptor, boolean tempPlural, int tempDice, int tempAdds) {
+ public Attack(String tempName, String tempDescriptor, boolean tempPlural, int tempDice, int tempAdds, int tempPrice) {
   dice = tempDice;
   adds = tempAdds;
   name = tempName;
   descriptor = tempDescriptor;
   plural = tempPlural;
+  price = tempPrice;
 }
 public String toString() {
   if(plural) {
@@ -34,7 +35,12 @@ public Damage damage(Creature c) {
   }
   return new Damage(0, 0);
 }
+public int getPrice(){
+  return price;
+}
+
 private String name, descriptor;
 private boolean plural;
 private int dice, adds;
+private int price;
 }

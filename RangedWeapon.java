@@ -1,7 +1,7 @@
 public class RangedWeapon extends RangedAttack {
 	// uses: 0 for infinite, positive number for number of times it can be used per combat
-	public RangedWeapon(String tempName, String tempDescriptor, boolean tempPlural, int tempDice, int tempAdds, int tempMinStr, int tempMinDex, int tempUses) {
-		super(tempName, tempDescriptor, tempPlural, tempDice, tempAdds);
+	public RangedWeapon(String tempName, String tempDescriptor, boolean tempPlural, int tempDice, int tempAdds, int tempMinStr, int tempMinDex, int tempUses, int tempPrice) {
+		super(tempName, tempDescriptor, tempPlural, tempDice, tempAdds, tempPrice);
 		minStr = tempMinStr;
 		minDex = tempMinDex;
 		uses = tempUses;

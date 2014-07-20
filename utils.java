@@ -102,4 +102,22 @@ public class utils {
      }
    }
  }
+
+ public static void shop(Player p, ArrayList<MeleeWeapon> meleeWeapons, ArrayList<RangedWeapon> rangedWeapons, ArrayList<Spell> spells) {
+  ArrayList<String> mainMenu = new ArrayList<String>();
+  if(meleeWeapons.size() > 0) {
+    mainMenu.add("Melee Weapons");
+  }
+  if(rangedWeapons.size() > 0) {
+    mainMenu.add("Ranged Weapons");
+  }
+  if(spells.size() > 0) {
+    mainMenu.add("Spells");
+  }
+  mainMenu.add("Nothing, it's a scam!");
+  int choice = -1;
+  do {
+    choice = menu("What would you like to purchase?", mainMenu);
+  } while(mainMenu.get(choice) != "Nothing, it's a scam!");
+ }
 }

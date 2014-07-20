@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 
 public abstract class Creature {
- public Creature(String tempName, MeleeWeapon[] tempMeleeWeapons, RangedWeapon[] tempRangedWeapons, Spell[] tempSpells, int tempStrength, int tempConstitution, int tempDexterity, int tempSpeed, int tempWizardry, int tempIntelligence, int tempDefenseValue, int tempHealRate) {
+ public Creature(String tempName, MeleeWeapon[] tempMeleeWeapons, RangedWeapon[] tempRangedWeapons, Spell[] tempSpells, int tempStrength, int tempConstitution, int tempDexterity, int tempSpeed, int tempWizardry, int tempIntelligence, int tempDefenseValue, int tempHealRate, int tempGP) {
   name = tempName;
   meleeWeapons = new ArrayList<MeleeWeapon>(Arrays.asList(tempMeleeWeapons));
   rangedWeapons = new ArrayList<RangedWeapon>(Arrays.asList(tempRangedWeapons));
@@ -15,6 +15,7 @@ public abstract class Creature {
   intelligence = tempIntelligence;
   defenseValue = tempDefenseValue;
   healRate = tempHealRate;
+  gp = tempGP;
 }
 
 public Damage dealMeleeDamage(int weaponNumber) {
@@ -122,4 +123,5 @@ protected ArrayList<RangedWeapon> rangedWeapons;
 protected ArrayList<Spell> spells;
 protected int defenseValue, healRate;
 protected int strength, constitution, dexterity, speed, wizardry, intelligence;
+protected int gp;
 }
