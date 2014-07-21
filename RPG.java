@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 class RPG {
 public static void main(String[] args) {
-  Setup.createPlayer();
   ArrayList<Monster> normal = new ArrayList<Monster>();
   normal.add(MakeMonster.skeleton());
   normal.add(MakeMonster.skeletonArcher());
