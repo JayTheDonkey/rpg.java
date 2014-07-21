@@ -1,6 +1,6 @@
 public class MeleeWeapon extends Attack {
-	public MeleeWeapon(String tempName, String tempDescriptor, boolean tempPlural, int tempDice, int tempAdds, int tempMinStr, int tempMinDex, int tempPrice) {
-		super(tempName, tempDescriptor, tempPlural, tempDice, tempAdds, tempPrice);
+	public MeleeWeapon(String tempName, String tempDescriptor, boolean tempPlural, int tempDice, int tempAdds, int tempMinStr, int tempMinDex, int tempPrice, boolean tempTwoHands) {
+		super(tempName, tempDescriptor, tempPlural, tempDice, tempAdds, tempPrice, tempTwoHands);
 		minStr = tempMinStr;
 		minDex = tempMinDex;
 	}

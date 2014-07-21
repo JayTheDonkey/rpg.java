@@ -1,11 +1,12 @@
 public abstract class Attack {
- public Attack(String tempName, String tempDescriptor, boolean tempPlural, int tempDice, int tempAdds, int tempPrice) {
+ public Attack(String tempName, String tempDescriptor, boolean tempPlural, int tempDice, int tempAdds, int tempPrice, boolean tempTwoHands) {
   dice = tempDice;
   adds = tempAdds;
   name = tempName;
   descriptor = tempDescriptor;
   plural = tempPlural;
   price = tempPrice;
+  twoHands = tempTwoHands;
 }
 public String toString() {
   if(plural) {
@@ -35,12 +36,22 @@ public Damage damage(Creature c) {
   }
   return new Damage(0, 0);
 }
+public int getDice() {
+  return dice;
+}
+public int getAdds() {
+  return adds;
+}
 public int getPrice(){
   return price;
+}
+public boolean isTwoHanded() {
+  return twoHands;
 }
 
 private String name, descriptor;
 private boolean plural;
 private int dice, adds;
 private int price;
+private boolean twoHands;
 }

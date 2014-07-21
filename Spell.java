@@ -1,6 +1,6 @@
 public class Spell extends RangedAttack {
-	public Spell(String tempName, String tempDescriptor, boolean tempPlural, int tempDice, int tempAdds, int tempMinInt, int tempWizCost, int tempPrice) {
-		super(tempName, tempDescriptor, tempPlural, tempDice, tempAdds, tempPrice);
+	public Spell(String tempName, String tempDescriptor, boolean tempPlural, int tempDice, int tempAdds, int tempMinInt, int tempWizCost, int tempPrice, boolean tempTwoHands) {
+		super(tempName, tempDescriptor, tempPlural, tempDice, tempAdds, tempPrice, tempTwoHands);
 		minInt = tempMinInt;
 		wizCost = tempWizCost;
 	}
