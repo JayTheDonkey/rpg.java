@@ -41,7 +41,7 @@ public class utils {
     return adjectives[utils.random(0,adjectives.length)];
   }
   public static String playerAdjectives() {
-    String[] adjectives = {"average looking","epic","ancient","whispering","bloodthirsty","Legendary","super duper","mighty","seal destroying","bug murdering","bugbear ending","St. Geschwindigkeitsbegrenzung's, the patron saint of speed limits, holy","badass","LENGENDARALLY EPIC"};
+    String[] adjectives = {"average looking","epic","ancient","whispering","bloodthirsty","Legendary","super duper","mighty","seal destroying","bug murdering","bugbear ending","St. Geschwindigkeitsbegrenzung's, the patron saint of speed limits", "holy","bad-ass","LENGENDARALLY EPIC"};
     return adjectives[utils.random(0,adjectives.length)];
   }
   public static void printMonsters(ArrayList<Monster> monsters){
