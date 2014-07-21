@@ -3,7 +3,9 @@ import java.util.ArrayList;
 
 public class MakeMeleeWeapon {
  public static ArrayList<MeleeWeapon> getAll(){
-  return new ArrayList<MeleeWeapon>(Arrays.asList(new MeleeWeapon[]{dirk("generic"),broadsword("generic"),falchion("generic"),greatSword("generic"),handAndAHalfSword("generic"),rapier("generic"),shortSword("generic"),axe("generic"),greatAxe("generic"),doubleBladedAxe("generic"),baton("generic"),club("generic"),flail("generic"),heavyFlail("generic"),warHammer("generic"),mace("generic"),morningstar("generic"), spear("generic"),footmansLance("generic"),longSpear("generic"),halfHalbard("generic"),halbard("generic"),poleaxe("generic"),brassKnuckles("generic"),talons("generic"),fists("generic"),rock("generic"),staff("generic")}));
+  return new ArrayList<MeleeWeapon>(Arrays.asList(new MeleeWeapon[]{dirk(utils.playerAdjectives()),broadsword(utils.playerAdjectives()),falchion(utils.playerAdjectives()),greatSword(utils.playerAdjectives()),handAndAHalfSword(utils.playerAdjectives()),rapier(utils.playerAdjectives()),shortSword(utils.playerAdjectives()),axe(utils.playerAdjectives()),
+    greatAxe(utils.playerAdjectives()),doubleBladedAxe(utils.playerAdjectives()),baton(utils.playerAdjectives()),club(utils.playerAdjectives()),flail(utils.playerAdjectives()),heavyFlail(utils.playerAdjectives()),warHammer(utils.playerAdjectives()),mace(utils.playerAdjectives()),morningstar(utils.playerAdjectives()), spear(utils.playerAdjectives()),
+    footmansLance(utils.playerAdjectives()),longSpear(utils.playerAdjectives()),halfHalbard(utils.playerAdjectives()),halbard(utils.playerAdjectives()),poleaxe(utils.playerAdjectives()),brassKnuckles(utils.monsterAdjective()),talons(utils.monsterAdjective()),fists(utils.monsterAdjective()),rock(utils.monsterAdjective()),staff(utils.playerAdjectives())}));
  }
  public static MeleeWeapon dirk(String descriptor) {
   return new MeleeWeapon("dirk", descriptor, false, 2, 1, 1, 4, 18, false);
@@ -88,5 +90,5 @@ public class MakeMeleeWeapon {
  }
  public static MeleeWeapon staff(String descriptor) {
   return new MeleeWeapon("staff", descriptor, false, 2, 0, 10, 8, 10, true);
- }
+}
 }

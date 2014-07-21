@@ -3,7 +3,8 @@ import java.util.ArrayList;
 
 public class MakeRangedWeapon {
  public static ArrayList<RangedWeapon> getAll() {
-  return new ArrayList<RangedWeapon>(Arrays.asList(new RangedWeapon[]{lightCrossbow("generic"),crossbow("generic"),heavyCrossbow("generic"),lightBow("generic"),bow("generic"),heavyBow("generic"),enchantedBow("generic"),sling("generic"),boomerang ("generic"),throwingAxe("generic"),rock("generic")}));
+  return new ArrayList<RangedWeapon>(Arrays.asList(new RangedWeapon[]{lightCrossbow(utils.playerAdjectives()),crossbow(utils.playerAdjectives()),heavyCrossbow(utils.playerAdjectives()),lightBow(utils.playerAdjectives()),bow(utils.playerAdjectives()),
+              heavyBow(utils.playerAdjectives()),enchantedBow(utils.playerAdjectives()),sling(utils.playerAdjectives()),boomerang (utils.playerAdjectives()),throwingAxe(utils.playerAdjectives()),rock(utils.playerAdjectives())}));
  }
  public static RangedWeapon lightCrossbow(String descriptor) {
   return new RangedWeapon("light crossbow", descriptor, false, 3, -1, 8, 12, 20, 150, false);

@@ -2,6 +2,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+
 public class Setup {
   public static Player createPlayer() {
     Scanner scan = new Scanner(System.in);
