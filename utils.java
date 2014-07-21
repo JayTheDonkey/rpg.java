@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+
 public class utils {
   public static void sleep(int milliseconds) {
     try {
@@ -34,6 +35,14 @@ public class utils {
   public static String print(String phrase){
     System.out.println(phrase);
     return phrase;
+  }
+  public static String monsterAdjective() {
+    String[] adjectives = {"dirty","rusty","old","average looking","cursed","mighty","misshapen","shiny","funny looking","bloody","acid bitten","scary looking","blasphemous",};
+    return adjectives[utils.random(0,adjectives.length)];
+  }
+  public static String playerAdjectives() {
+    String[] adjectives = {"average looking","epic","ancient","whispering","bloodthirsty","Legendary","super duper","mighty","seal destroying","bug murdering","bugbear ending","St. Geschwindigkeitsbegrenzung's, the patron saint of speed limits, holy","badass","LENGENDARALLY EPIC"};
+    return adjectives[utils.random(0,adjectives.length)];
   }
   public static void printMonsters(ArrayList<Monster> monsters){
     ArrayList<String[]> monsterNames = new ArrayList<String[]>();
