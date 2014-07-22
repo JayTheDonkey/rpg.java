@@ -1,7 +1,7 @@
 public class Armor {
- public Armor(String tempName, String tempDiscriptor, int tempMinDex, int tempMinStr, int tempDefenceValue, int tempPrice, int tempDexDebuff, int tempSpeedDebuff, int tempMagicResistance) {
+ public Armor(String tempName, String tempDescriptor, int tempMinDex, int tempMinStr, int tempDefenceValue, int tempPrice, int tempDexDebuff, int tempSpeedDebuff, int tempMagicResistance) {
   String name = tempName;
-  String discriptor = tempDiscriptor;
+  String descriptor = tempDescriptor;
   int minDex = tempMinDex;
   int minStr = tempMinStr;
   int defenceValue = tempDefenceValue;
@@ -9,45 +9,41 @@ public class Armor {
   int dexDebuff = tempDexDebuff;
   int speedDebuff = tempSpeedDebuff;
   int magicResistance = tempMagicResistance;
- }
- public String toString(){
-  return ("a suit of "+ discriptor +" "+ name +" armor.");
- }
- public int getMinDex(){
+}
+public String toString(){
+  return ("a suit of " + descriptor + " " + name + " armor.");
+}
+public int getMinDex(){
   return minDex;
- }
- public int getMinStr(){
+}
+public int getMinStr(){
   return minStr;
- }
- public int getDefenceValue(){
+}
+public int getDefenceValue(){
   return defenceValue;
- }
- public int getPrice(){
+}
+public int getPrice(){
   return price;
- }
- public int getMagicResistance(){
+}
+public int getMagicResistance(){
   return magicResistance;
- }
- public int getDexDebuff(){
+}
+public int getDexDebuff(){
   return dexDebuff;
- }
- public int getSpeedDebuff(){
- 	return speedDebuff;
- }
- public boolean canUse(Creature c) {
+}
+public int getSpeedDebuff(){
+  return speedDebuff;
+}
+public boolean canUse(Creature c) {
   return (c.getStrength() >= minStr && c.getDexterity() >= minDex);
- }
-  private String name;
-  private String discriptor;
-  private int minDex;
-  private int minStr;
-  private int defenceValue;
-  private int price;
-  private int dexDebuff;
-  private int speedDebuff;
-  private int magicResistance;
- 
- 
-
- 
+}
+private String name;
+private String descriptor;
+private int minDex;
+private int minStr;
+private int defenceValue;
+private int price;
+private int dexDebuff;
+private int speedDebuff;
+private int magicResistance;
 }
