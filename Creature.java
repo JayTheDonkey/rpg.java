@@ -2,18 +2,18 @@ import java.util.Arrays;
 import java.util.ArrayList;
 
 public abstract class Creature {
- public Creature(String tempName, MeleeWeapon[] tempMeleeWeapons, RangedWeapon[] tempRangedWeapons, Spell[] tempSpells, int tempStrength, int tempConstitution, int tempDexterity, int tempSpeed, int tempWizardry, int tempIntelligence, int tempDefenseValue, int tempHealRate, int tempGP) {
+ public Creature(String tempName, MeleeWeapon[] tempMeleeWeapons, RangedWeapon[] tempRangedWeapons, Spell[] tempSpells, Armor[] tempArmor, int tempStrength, int tempConstitution, int tempDexterity, int tempSpeed, int tempWizardry, int tempIntelligence,  int tempHealRate, int tempGP) {
   name = tempName;
   meleeWeapons = new ArrayList<MeleeWeapon>(Arrays.asList(tempMeleeWeapons));
   rangedWeapons = new ArrayList<RangedWeapon>(Arrays.asList(tempRangedWeapons));
   spells = new ArrayList<Spell>(Arrays.asList(tempSpells));
+  armor = new ArrayList<Armor>(Arrays.asList(tempArmor));
   strength = tempStrength;
   constitution = tempConstitution;
   dexterity = tempDexterity;
   speed = tempSpeed;
   wizardry = tempWizardry;
   intelligence = tempIntelligence;
-  defenseValue = tempDefenseValue;
   healRate = tempHealRate;
   gp = tempGP;
 }
@@ -78,6 +78,9 @@ public int getDexterity() {
   return dexterity;
 }
 public int getSpeed() {
+  if (armor.size() > 0){
+    return (speed - armor.get(0).getSpeedDebuff());
+  }
   return speed;
 }
 public int getWizardry() {
@@ -87,7 +90,10 @@ public int getIntelligence() {
   return intelligence;
 }
 public int getDefenseValue() {
-  return defenseValue;
+  if (armor.size() > 0){
+    return (armor.get(0).getDefenceValue());
+  }
+  return 0;
 }
 public int getHealRate() {
   return healRate;
@@ -99,7 +105,7 @@ public int castSpell(int wizCost) {
 
  // returns amount of damage actually taken
 public int takeDamage(Damage damage){
-  int taken = damage.getBlockable() - defenseValue + damage.getUnblockable();
+  int taken = damage.getBlockable() - armor.get(0).getDefenceValue() + damage.getUnblockable();
   constitution -= taken;
   return taken;
 }
@@ -128,7 +134,8 @@ protected String name;
 protected ArrayList<MeleeWeapon> meleeWeapons;
 protected ArrayList<RangedWeapon> rangedWeapons;
 protected ArrayList<Spell> spells;
-protected int defenseValue, healRate;
+protected ArrayList<Armor> armor;
+protected int healRate;
 protected int strength, constitution, dexterity, speed, wizardry, intelligence;
 protected int gp;
 }

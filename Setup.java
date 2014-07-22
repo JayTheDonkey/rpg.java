@@ -47,6 +47,7 @@ public class Setup {
     ArrayList<RangedWeapon> RangedWeapons = new ArrayList<RangedWeapon>();
     ArrayList<MeleeWeapon> MeleeWeapons = new ArrayList<MeleeWeapon>();
     ArrayList<Spell> Spells = new ArrayList<Spell>();
+    ArrayList<Armor> Armor = new ArrayList<Armor>();
 
     ArrayList<String> classes = new ArrayList<String>(Arrays.asList(new String[]{"Rogue", "Warrior", "Wizard", "Cleric"}));
     int classChoice = utils.menu("Choose your class", classes);
@@ -136,19 +137,25 @@ public class Setup {
         Spells.add(tempSpells.get(i));
       }
     }
+    ArrayList<Armor> tempArmor = MakeArmor.getAll();
+    for(int i = 0; i < tempArmor.size(); i++) {
+      if(tempArmor.get(i).canUse(p)) {
+        Armor.add(tempArmor.get(i));
+      }
+    }
 
     switch (classChoice) {
       case 0:
-        utils.shop(p, MeleeWeapons, RangedWeapons, Spells);
+        utils.shop(p, MeleeWeapons, RangedWeapons, Spells, Armor);
         break;
       case 1:
-        utils.shop(p, MeleeWeapons, RangedWeapons, new ArrayList<Spell>());
+        utils.shop(p, MeleeWeapons, RangedWeapons, new ArrayList<Spell>(), Armor);
         break;
       case 2:
-        utils.shop(p, new ArrayList<MeleeWeapon>(Arrays.asList(new MeleeWeapon[]{MakeMeleeWeapon.staff("sparkly")})), new ArrayList<RangedWeapon>(), Spells);
+        utils.shop(p, new ArrayList<MeleeWeapon>(Arrays.asList(new MeleeWeapon[]{MakeMeleeWeapon.staff("sparkly")})), new ArrayList<RangedWeapon>(), Spells, Armor);
         break;
       case 3:
-        utils.shop(p, MeleeWeapons, new ArrayList<RangedWeapon>(), Spells);
+        utils.shop(p, MeleeWeapons, new ArrayList<RangedWeapon>(), Spells, Armor);
         break;
     }
     return p;

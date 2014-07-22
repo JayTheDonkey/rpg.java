@@ -112,7 +112,7 @@ public class utils {
    }
  }
 
- public static void shop(Player p, ArrayList<MeleeWeapon> meleeWeapons, ArrayList<RangedWeapon> rangedWeapons, ArrayList<Spell> spells) {
+ public static void shop(Player p, ArrayList<MeleeWeapon> meleeWeapons, ArrayList<RangedWeapon> rangedWeapons, ArrayList<Spell> spells, ArrayList<Armor> armor) {
   ArrayList<String> mainMenu = new ArrayList<String>();
   if(meleeWeapons.size() > 0) {
     mainMenu.add("Melee Weapons");
@@ -210,6 +210,9 @@ public class utils {
       else {
         System.out.println("Sorry, you don't have enough GP to buy that!");
       }
+    }
+    else if (mainMenu.get(choice).equals("Armor")){
+      System.out.println("There is currently no armor for sale");
     }
   } while(!mainMenu.get(choice).equals("Nothing, it's a scam!"));
  }
