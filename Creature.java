@@ -108,7 +108,9 @@ public int castSpell(int wizCost) {
 
  // returns amount of damage actually taken
 public int takeDamage(Damage damage){
-  int taken = damage.getBlockable() - armor.get(0).getDefenseValue() + damage.getUnblockable();
+  int taken = damage.getBlockable() - armor.get(0).getDefenseValue();
+  taken = taken > 0 ? taken : 0;
+  taken += damage.getUnblockable();
   constitution -= taken;
   return taken;
 }
