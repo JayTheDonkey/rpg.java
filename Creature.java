@@ -94,7 +94,7 @@ public int getIntelligence() {
 }
 public int getDefenseValue() {
   if (armor.size() > 0){
-    return (armor.get(0).getDefenceValue());
+    return (armor.get(0).getDefenseValue());
   }
   return 0;
 }
@@ -108,7 +108,7 @@ public int castSpell(int wizCost) {
 
  // returns amount of damage actually taken
 public int takeDamage(Damage damage){
-  int taken = damage.getBlockable() - armor.get(0).getDefenceValue() + damage.getUnblockable();
+  int taken = damage.getBlockable() - armor.get(0).getDefenseValue() + damage.getUnblockable();
   constitution -= taken;
   return taken;
 }

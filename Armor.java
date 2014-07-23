@@ -1,14 +1,14 @@
 public class Armor {
- public Armor(String tempName, String tempDescriptor, int tempMinDex, int tempMinStr, int tempDefenceValue, int tempPrice, int tempDexDebuff, int tempSpeedDebuff, int tempMagicResistance) {
-  String name = tempName;
-  String descriptor = tempDescriptor;
-  int minDex = tempMinDex;
-  int minStr = tempMinStr;
-  int defenceValue = tempDefenceValue;
-  int price = tempPrice;
-  int dexDebuff = tempDexDebuff;
-  int speedDebuff = tempSpeedDebuff;
-  int magicResistance = tempMagicResistance;
+ public Armor(String tempName, String tempDescriptor, int tempMinDex, int tempMinStr, int tempDefenseValue, int tempPrice, int tempDexDebuff, int tempSpeedDebuff, int tempMagicResistance) {
+  name = tempName;
+  descriptor = tempDescriptor;
+  minDex = tempMinDex;
+  minStr = tempMinStr;
+  defenseValue = tempDefenseValue;
+  price = tempPrice;
+  dexDebuff = tempDexDebuff;
+  speedDebuff = tempSpeedDebuff;
+  magicResistance = tempMagicResistance;
 }
 public String toString(){
   return ("a suit of " + descriptor + " " + name + " armor.");
@@ -19,8 +19,8 @@ public int getMinDex(){
 public int getMinStr(){
   return minStr;
 }
-public int getDefenceValue(){
-  return defenceValue;
+public int getDefenseValue(){
+  return defenseValue;
 }
 public int getPrice(){
   return price;
@@ -41,7 +41,7 @@ private String name;
 private String descriptor;
 private int minDex;
 private int minStr;
-private int defenceValue;
+private int defenseValue;
 private int price;
 private int dexDebuff;
 private int speedDebuff;
