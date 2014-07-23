@@ -41,7 +41,6 @@ public class Setup {
     int Intelligence = 0;
     int Luck = 0;
     int Charisma = 0;
-    int DefenseValue = 0;
     int HealRate = 0;
 
     ArrayList<RangedWeapon> RangedWeapons = new ArrayList<RangedWeapon>();
@@ -63,7 +62,6 @@ public class Setup {
         Wizardry = stats.remove(0);
         Speed = stats.remove(0);
         Constitution = stats.remove(0);
-        DefenseValue = 15;
         HealRate = 0;
         break;
       case 1:
@@ -76,7 +74,6 @@ public class Setup {
         Charisma = stats.remove(0);
         Wizardry = stats.remove(0);
         Luck = stats.remove(0);
-        DefenseValue = 20;
         HealRate = 0;
         break;
       case 2:
@@ -89,7 +86,6 @@ public class Setup {
         Dexterity = stats.remove(0);
         Charisma = stats.remove(0);
         Speed = stats.remove(0);
-        DefenseValue = 7;
         HealRate = 0;
         break;
       case 3:
@@ -102,7 +98,6 @@ public class Setup {
         Luck= stats.remove(0);
         Speed= stats.remove(0);
         Dexterity= stats.remove(0);
-        DefenseValue = 15;
         HealRate = 5;
         break;
     }

@@ -40,6 +40,9 @@ public ArrayList<RangedWeapon> getRangedWeapons() {
 public ArrayList<Spell> getSpells() {
   return spells;
 }
+public ArrayList<Armor> getArmor() {
+  return armor;
+}
 public ArrayList<MeleeWeapon> getUsableMeleeAttacks() {
   ArrayList<MeleeWeapon> returnList = new ArrayList<MeleeWeapon>();
   for(int i = 0; i < meleeWeapons.size(); i++) {

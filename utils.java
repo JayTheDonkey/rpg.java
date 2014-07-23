@@ -123,6 +123,9 @@ public class utils {
   if(spells.size() > 0) {
     mainMenu.add("Spells");
   }
+  if (armor.size() > 0) {
+    mainMenu.add("Armor");
+  }
   mainMenu.add("Nothing, it's a scam!");
   int choice = -1;
   do {
@@ -212,7 +215,30 @@ public class utils {
       }
     }
     else if (mainMenu.get(choice).equals("Armor")){
-      System.out.println("There is currently no armor for sale");
+      //System.out.println("There is currently no armor for sale");
+      ArrayList<String> defence = new ArrayList<String>();
+      for (int i = 0; i < armor.size(); i++){
+        String next = armor.get(i) +"\n\t" + Integer.toString(armor.get(i).getPrice()) + "gp " + Integer.toString(armor.get(i).getDefenceValue()) + "defence points";
+        if(armor.get(i).getSpeedDebuff() > 0) {
+          next += " - " + Integer.toString(armor.get(i).getSpeedDebuff()) + " to dexterity";
+        }
+        if(armor.get(i).getSpeedDebuff() > 0) {
+          next += " - " + Integer.toString(armor.get(i).getSpeedDebuff()) + " to speed";
+        }
+        defence.add(next);
+      }
+      defence.add("nothing");
+      int buying = menu("what would you like to buy with your " + Integer.toString(p.getGP()) + "GP?", defence);
+      if(buying == armor.size()) {
+        System.out.println("Fine! be like that!");
+      }
+      else if(armor.get(buying).getPrice() <= p.getGP()) {
+        p.getArmor().add(armor.get(buying));
+        p.setGP(p.getGP() - armor.get(buying).getPrice());
+      }
+      else {
+        System.out.println("Sorry, you don't have enough GP to buy that!");
+      }
     }
   } while(!mainMenu.get(choice).equals("Nothing, it's a scam!"));
  }
