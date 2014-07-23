@@ -117,7 +117,7 @@ public class Setup {
     System.out.println("lk:\t" + Luck);
     System.out.println("chr:\t" + Charisma);
 
-    Player p = new Player(classes.get(classChoice), name, new MeleeWeapon[]{}, new RangedWeapon[]{}, new Spell[]{}, Strength, Constitution, Dexterity, Speed, Intelligence, Wizardry, Luck, Charisma, DefenseValue, HealRate, utils.random(300,700));
+    Player p = new Player(classes.get(classChoice), name, new MeleeWeapon[]{}, new RangedWeapon[]{}, new Spell[]{}, new Armor[]{}, Strength, Constitution, Dexterity, Speed, Intelligence, Wizardry, Luck, Charisma, HealRate, utils.random(300,700));
 
     ArrayList<MeleeWeapon> tempMelee = MakeMeleeWeapon.getAll();
     for(int i = 0; i < tempMelee.size(); i++) {

@@ -12,7 +12,7 @@ public class Combat {
   }
   ArrayList<Integer> speeds = new ArrayList<Integer>();
   for(int i = 0; i < monsters.size(); i++) {
-    speeds.add(monsters.get(i).getSpeed() + utils.random(-3, 4));
+    speeds.add(monsters.get(i).getSpeed() + utils.random(-3, 4)); 
   }
   ArrayList<Monster> returnMonsters = new ArrayList<Monster>();
   for(int i = 0; i < speeds.size(); i++) {
