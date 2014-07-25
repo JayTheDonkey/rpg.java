@@ -14,6 +14,12 @@ public abstract class Creature {
   speed = tempSpeed;
   wizardry = tempWizardry;
   intelligence = tempIntelligence;
+  modifiedStrength = strength;
+  modifiedConstitution = constitution;
+  modifiedDexterity = dexterity;
+  modifiedSpeed = speed;
+  modifiedWizardry = wizardry;
+  modifiedIntelligence = intelligence;
   healRate = tempHealRate;
   gp = tempGP;
 }
@@ -72,25 +78,25 @@ public ArrayList<RangedAttack> getUsableRangedAttacks() {
 }
 
 public int getStrength() {
-  return strength;
+  return modifiedStrength;
 }
 public int getConstitution() {
-  return constitution;
+  return modifiedConstitution;
 }
 public int getDexterity() {
-  return dexterity;
+  return modifiedDexterity;
 }
 public int getSpeed() {
   if (armor.size() > 0){
-    return (speed - armor.get(0).getSpeedDebuff());
+    return (modifiedSpeed - armor.get(0).getSpeedDebuff());
   }
   return speed;
 }
 public int getWizardry() {
-  return wizardry;
+  return modifiedWizardry;
 }
 public int getIntelligence() {
-  return intelligence;
+  return modifiedIntelligence;
 }
 public int getDefenseValue() {
   if (armor.size() > 0){
@@ -101,9 +107,16 @@ public int getDefenseValue() {
 public int getHealRate() {
   return healRate;
 }
-
+public void reset(){
+  modifiedStrength = strength;
+  modifiedConstitution = constitution;
+  modifiedDexterity = dexterity;
+  modifiedSpeed = speed;
+  modifiedWizardry = wizardry;
+  modifiedIntelligence = intelligence;
+}
 public int castSpell(int wizCost) {
-  return (wizardry -= wizCost);
+  return (modifiedWizardry -= wizCost);
 }
 
  // returns amount of damage actually taken
@@ -111,7 +124,7 @@ public int takeDamage(Damage damage){
   int taken = damage.getBlockable() - armor.get(0).getDefenseValue();
   taken = taken > 0 ? taken : 0;
   taken += damage.getUnblockable();
-  constitution -= taken;
+  modifiedConstitution -= taken;
   return taken;
 }
 public int heal(){
@@ -142,5 +155,6 @@ protected ArrayList<Spell> spells;
 protected ArrayList<Armor> armor;
 protected int healRate;
 protected int strength, constitution, dexterity, speed, wizardry, intelligence;
+protected int modifiedStrength, modifiedConstitution, modifiedDexterity, modifiedSpeed, modifiedWizardry, modifiedIntelligence;
 protected int gp;
 }
