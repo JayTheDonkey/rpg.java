@@ -13,6 +13,12 @@ public class RangedWeapon extends RangedAttack {
 	public int getMinDex() {
 		return minDex;
 	}
+	public int getMaxUses() {
+		return uses;
+	}
+	public int getUsesLeft() {
+		return uses - used;
+	}
 	public void replenish() {
 		used = 0;
 	}

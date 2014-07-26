@@ -13,6 +13,12 @@ public class Armor {
 public String toString(){
   return ("a suit of " + descriptor + " " + name + " armor.");
 }
+public String getName() {
+  return name;
+}
+public String getDescriptor() {
+  return descriptor;
+}
 public int getMinDex(){
   return minDex;
 }

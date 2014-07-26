@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class CombatNode extends Node {
   public CombatNode(ArrayList<Monster> tempListSpecial, ArrayList<Monster> tempListNormal, int tempMinMonsters, int tempMaxMonsters, Node tempNext) {
+    super();
     listSpecial = tempListSpecial;
     listNormal = tempListNormal;
     minMonsters = tempMinMonsters;
@@ -41,11 +42,11 @@ public class CombatNode extends Node {
     return (enemies + numSummoned);
   }
 
-  
+
   public Node getNext() {
     return next;
   }
-  
+
   private int enemies = 0;
   private int normalMonsters = 0;
   private int specialMonsters = 0;

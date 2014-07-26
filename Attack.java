@@ -20,6 +20,17 @@ public String toPluralString() {
   }
   return descriptor + " " + name + "s";
 }
+
+public String getName() {
+  return name;
+}
+public String getDescriptor() {
+  return descriptor;
+}
+public boolean isPlural() {
+  return plural;
+}
+
 public abstract boolean canUse(Creature c);
 public Damage damage(Creature c) {
   if(canUse(c)) {

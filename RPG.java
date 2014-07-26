@@ -17,6 +17,8 @@ public static void main(String[] args) {
   EndNode ending = new EndNode("...the end");
   CombatNode node = new CombatNode(special, normal, 3, 8, ending);
 
+  Save.write("save1", node.getID(), human);
+
   if(Combat.run(human, node, true)) {
     utils.print("good job! you won!");
   }
