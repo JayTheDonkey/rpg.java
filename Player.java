@@ -1,11 +1,19 @@
 public class Player extends Creature {
-  public Player(String tempclassName, String tempName, MeleeWeapon[] tempMeleeWeapons, RangedWeapon[] tempRangedWeapons, Spell[] tempSpells, Armor[] tempArmor, int tempStrength, int tempConstitution, int tempDexterity, int tempSpeed, int tempIntelligence, int tempWizardry, int tempLuck, int tempCharisma, int tempHealRate, int tempGP){
+  public Player(String tempclassName, String tempName, MeleeWeapon[] tempMeleeWeapons, RangedWeapon[] tempRangedWeapons, Spell[] tempSpells, Armor[] tempArmor, int tempStrength, int tempConstitution, int tempDexterity, int tempSpeed, int tempIntelligence, int tempWizardry, int tempLuck, int tempCharisma, int tempHealRate, int tempGP) {
     super(tempName, tempMeleeWeapons, tempRangedWeapons, tempSpells, tempArmor, tempStrength, tempConstitution, tempDexterity, tempSpeed, tempWizardry, tempIntelligence, tempHealRate, tempGP);
     className = tempclassName;
     luck = tempLuck;
     charisma = tempCharisma;
     xp = 0;
     level = 1;
+  }
+  public Player(String tempclassName, String tempName, MeleeWeapon[] tempMeleeWeapons, RangedWeapon[] tempRangedWeapons, Spell[] tempSpells, Armor[] tempArmor, int tempStrength, int tempConstitution, int tempDexterity, int tempSpeed, int tempIntelligence, int tempWizardry, int tempLuck, int tempCharisma, int tempHealRate, int tempGP, int tempXP, int tempLevel) {
+    super(tempName, tempMeleeWeapons, tempRangedWeapons, tempSpells, tempArmor, tempStrength, tempConstitution, tempDexterity, tempSpeed, tempWizardry, tempIntelligence, tempHealRate, tempGP);
+    className = tempclassName;
+    luck = tempLuck;
+    charisma = tempCharisma;
+    xp = tempXP;
+    level = tempLevel;
   }
   public String toString() {
     return name;

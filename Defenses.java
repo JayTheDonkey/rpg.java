@@ -11,7 +11,13 @@ public class Defenses {
   magicResistance = tempMagicResistance;
 }
 public String toString(){
-  return ("a suit of " + descriptor + " " + name + " armor.");
+  return ("a " + descriptor + " " + name);
+}
+public String getName() {
+  return name;
+}
+public String getDescriptor() {
+  return descriptor;
 }
 public int getMinDex(){
   return minDex;
