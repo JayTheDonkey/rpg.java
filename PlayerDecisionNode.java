@@ -1,16 +1,15 @@
+import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class PlayerDecisionNode extends DecisionNode {
-  public PlayerDecisionNode(ArrayList<Node> tempNextNodes, ArrayList<String> tempMenu){
+  public PlayerDecisionNode(String[] tempMenu, Node[] tempNextNodes){
     super(tempNextNodes);
-    menu = tempMenu;
+    menu = new ArrayList<String>(Arrays.asList(tempMenu));
   }
 
-  public Node getNext() {
-    return nextNodes.get(utils.menu("what would you like to do?", menu) - 1);
+  public Node process(Player p) {
+    return nextNodes.get(utils.menu("what would you like to do?", menu));
     }
 
   private ArrayList<String> menu;
-  Scanner scan = new Scanner(System.in);
 }

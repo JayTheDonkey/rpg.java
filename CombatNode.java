@@ -1,13 +1,15 @@
 import java.util.ArrayList;
 
 public class CombatNode extends Node {
-  public CombatNode(ArrayList<Monster> tempListSpecial, ArrayList<Monster> tempListNormal, int tempMinMonsters, int tempMaxMonsters, Node tempNext) {
+  public CombatNode(ArrayList<Monster> tempListSpecial, ArrayList<Monster> tempListNormal, int tempMinMonsters, int tempMaxMonsters, Node tempWinNext, Node tempLoseNext, boolean tempStartAtRange) {
     super();
     listSpecial = tempListSpecial;
     listNormal = tempListNormal;
     minMonsters = tempMinMonsters;
     maxMonsters = tempMaxMonsters;
-    next = tempNext;
+    winNext = tempWinNext;
+    loseNext = tempLoseNext;
+    startAtRange = tempStartAtRange;
     }
   public void startCombat(){
     enemies = utils.random(minMonsters, maxMonsters); //make a good enemy number generator
@@ -42,9 +44,11 @@ public class CombatNode extends Node {
     return (enemies + numSummoned);
   }
 
-
-  public Node getNext() {
-    return next;
+  public Node process(Player p) {
+    if(Combat.run(p, this, startAtRange)) {
+      return winNext;
+      }
+    return loseNext;
   }
 
   private int enemies = 0;
@@ -53,7 +57,8 @@ public class CombatNode extends Node {
   private int minMonsters, maxMonsters;
   private ArrayList<Monster> listSpecial;
   private ArrayList<Monster> listNormal;
-  private Node next;
+  private Node winNext, loseNext;
+  private boolean startAtRange;
 }
 
 
