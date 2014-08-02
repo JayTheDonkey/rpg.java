@@ -10,6 +10,12 @@ public class Defenses {
   speedDebuff = tempSpeedDebuff;
   magicResistance = tempMagicResistance;
 }
+ public String getName(){
+   return name;
+ }
+ public String getDescriptor(){
+   return descriptor;
+ }
 public String toString(){
   return ("a suit of " + descriptor + " " + name + " armor.");
 }
