@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Combat {
   // modifies each Creature's agility by a range from -3 to 3, then returns the list of monsters as fast or faster than the player if faster is true, otherwise returns slower monsters
- public static ArrayList<Monster> initiative(ArrayList<Monster> monsters, Player p, boolean atRange, boolean faster) {
+ private static ArrayList<Monster> initiative(ArrayList<Monster> monsters, Player p, boolean atRange, boolean faster) {
   int target = 0;
   if(atRange) {
     target = p.getSpeed() + utils.random(0, 7);
@@ -27,7 +27,7 @@ public class Combat {
 }
 
  // returns false if player is dead
-public static boolean hitHealPlayer(Player p, ArrayList<Monster> monsters, boolean atRange) {
+private static boolean hitHealPlayer(Player p, ArrayList<Monster> monsters, boolean atRange) {
  int blockable = 0;
  int unblockable = 0;
  utils.print("you are attacked by");
@@ -88,7 +88,7 @@ return(p.getConstitution() > 0);
 }
 
  // returns false if there are no monsters
-public static boolean hitHealMonster(Player p, ArrayList<Monster> monsters, int whichMonster, boolean atRange) {
+private static boolean hitHealMonster(Player p, ArrayList<Monster> monsters, int whichMonster, boolean atRange) {
  ArrayList<String> rAttacks = new ArrayList<String>();
  for(int i = 0; i < p.getUsableRangedAttacks().size(); i++) {
    rAttacks.add(p.getUsableRangedAttacks().get(i).toString());
@@ -136,7 +136,7 @@ return true;
 }
 
 // run the combat
-public static boolean actualCombat(Player p, CombatNode node, boolean atRange){
+private static boolean actualCombat(Player p, CombatNode node, boolean atRange){
  node.startCombat();
  ArrayList<Monster> monsters = node.monsterList();
  ArrayList<Monster> successful = new ArrayList<Monster>();
@@ -226,9 +226,6 @@ public static boolean actualCombat(Player p, CombatNode node, boolean atRange){
    }
  }
 
- Node next = node.getNext();
- next = next.getNext();
- System.out.println(next);
  return true;
 }
 

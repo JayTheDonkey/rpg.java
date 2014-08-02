@@ -1,7 +1,11 @@
 #compiled files
 *.class
+
 #autosaves from dr java
 *.java~
+
+#save files
+*.json
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

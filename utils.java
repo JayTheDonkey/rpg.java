@@ -36,6 +36,16 @@ public class utils {
     System.out.println(phrase);
     return phrase;
   }
+
+  public static String toCamelCase(String s){
+    String[] parts = s.split(" ");
+    String camelCaseString = "";
+    for (String part : parts){
+      camelCaseString += part.substring(0, 1).toUpperCase() + part.substring(1).toLowerCase();
+    }
+    return camelCaseString.substring(0, 1).toLowerCase() + camelCaseString.substring(1);
+  }
+
   public static String monsterAdjective() {
     String[] adjectives = {"dirty","rusty","old","average looking","cursed","mighty","misshapen","shiny","funny looking","bloody","acid bitten","scary looking","blasphemous",};
     return adjectives[utils.random(0,adjectives.length)];
@@ -76,43 +86,43 @@ public class utils {
    }
  }
  public static void printMonstersAndWeapons(ArrayList<Monster> monsters, ArrayList<Attack> weapons){
-    ArrayList<String[]> monsterNames = new ArrayList<String[]>();
-    ArrayList<String[]> weaponNames = new ArrayList<String[]>();
-    for (int i = 0; i < monsters.size(); i++){
-      monsterNames.add(new String[]{monsters.get(i).toString(), monsters.get(i).toPluralString()});
-      weaponNames.add(new String[]{weapons.get(i).toString(), weapons.get(i).toPluralString()});
-    }
-    ArrayList<String[]> uniqueMonsters = new ArrayList<String[]>();
-    ArrayList<String[]> uniqueWeapons = new ArrayList<String[]>();
-    ArrayList<Integer> number = new ArrayList<Integer>();
-    while(monsterNames.size() > 0) {
-     String[] currentMonster = monsterNames.remove(0);
-     String[] currentWeapon = weaponNames.remove(0);
-     boolean exists = false;
-     for(int i = 0; i < uniqueMonsters.size(); i++) {
-       if(uniqueMonsters.get(i)[0].equals(currentMonster[0])) {
-         number.set(i, number.get(i) + 1);
-         exists = true;
-       }
-     }
-     if(!exists) {
-       uniqueMonsters.add(currentMonster);
-       uniqueWeapons.add(currentWeapon);
-       number.add(1);
+  ArrayList<String[]> monsterNames = new ArrayList<String[]>();
+  ArrayList<String[]> weaponNames = new ArrayList<String[]>();
+  for (int i = 0; i < monsters.size(); i++){
+    monsterNames.add(new String[]{monsters.get(i).toString(), monsters.get(i).toPluralString()});
+    weaponNames.add(new String[]{weapons.get(i).toString(), weapons.get(i).toPluralString()});
+  }
+  ArrayList<String[]> uniqueMonsters = new ArrayList<String[]>();
+  ArrayList<String[]> uniqueWeapons = new ArrayList<String[]>();
+  ArrayList<Integer> number = new ArrayList<Integer>();
+  while(monsterNames.size() > 0) {
+   String[] currentMonster = monsterNames.remove(0);
+   String[] currentWeapon = weaponNames.remove(0);
+   boolean exists = false;
+   for(int i = 0; i < uniqueMonsters.size(); i++) {
+     if(uniqueMonsters.get(i)[0].equals(currentMonster[0])) {
+       number.set(i, number.get(i) + 1);
+       exists = true;
      }
    }
-
-   for(int j = 0; j < number.size(); j++) {
-     if(number.get(j) == 1) {
-       System.out.println("1 " + uniqueMonsters.get(j)[0] + " with a " + uniqueWeapons.get(j)[0]);
-     }
-     else {
-       System.out.println(Integer.toString(number.get(j)) + " " + uniqueMonsters.get(j)[1] + " with " + uniqueWeapons.get(j)[1]);
-     }
+   if(!exists) {
+     uniqueMonsters.add(currentMonster);
+     uniqueWeapons.add(currentWeapon);
+     number.add(1);
    }
  }
 
- public static void shop(Player p, ArrayList<MeleeWeapon> meleeWeapons, ArrayList<RangedWeapon> rangedWeapons, ArrayList<Spell> spells, ArrayList<Armor> armor) {
+ for(int j = 0; j < number.size(); j++) {
+   if(number.get(j) == 1) {
+     System.out.println("1 " + uniqueMonsters.get(j)[0] + " with a " + uniqueWeapons.get(j)[0]);
+   }
+   else {
+     System.out.println(Integer.toString(number.get(j)) + " " + uniqueMonsters.get(j)[1] + " with " + uniqueWeapons.get(j)[1]);
+   }
+ }
+}
+
+public static void shop(Player p, ArrayList<MeleeWeapon> meleeWeapons, ArrayList<RangedWeapon> rangedWeapons, ArrayList<Spell> spells, ArrayList<Armor> armor) {
   ArrayList<String> mainMenu = new ArrayList<String>();
   if(meleeWeapons.size() > 0) {
     mainMenu.add("Melee Weapons");
@@ -240,5 +250,5 @@ public class utils {
       }
     }
   } while(!mainMenu.get(choice).equals("Nothing, it's a scam!"));
- }
+}
 }

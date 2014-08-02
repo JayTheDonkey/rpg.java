@@ -1,13 +1,113 @@
+import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
+
+import java.util.Iterator;
+import java.util.ArrayList;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+import java.lang.reflect.Method;
 
 public class Save {
-	public static void write(String saveName, int nodeID, Player p) {
+	public static GameState read(String saveName) {
+		JSONParser parser = new JSONParser();
+		try {
+			FileReader fileReader = new FileReader(saveName + ".json");
+			JSONObject jsonGame = (JSONObject) parser.parse(fileReader);
+			JSONObject jsonPlayer = (JSONObject) jsonGame.get("Player");
+
+			JSONArray jsonAttacks;
+			JSONArray jsonDefenses;
+			Iterator i;
+
+			ArrayList<MeleeWeapon> meleeWeapons = new ArrayList<MeleeWeapon>();
+			jsonAttacks = (JSONArray) jsonPlayer.get("melee weapons");
+			i = jsonAttacks.iterator();
+			while(i.hasNext()) {
+				JSONObject jsonAttack = (JSONObject) i.next();
+				String stringAttack = utils.toCamelCase((String)jsonAttack.get("name"));
+
+				try {
+		      Class cls = Class.forName("MakeMeleeWeapon");
+		      Method makeAtttack = cls.getDeclaredMethod(stringAttack, new Class[]{String.class});
+		      MakeMeleeWeapon makeMeleeWeapon = new MakeMeleeWeapon();
+		      meleeWeapons.add((MeleeWeapon)makeAtttack.invoke(makeMeleeWeapon, (String)jsonAttack.get("descriptor")));
+		    }
+		    catch(Exception ex){
+		      ex.printStackTrace();
+		    }
+			}
+
+			ArrayList<RangedWeapon> rangedWeapons = new ArrayList<RangedWeapon>();
+			jsonAttacks = (JSONArray) jsonPlayer.get("ranged weapons");
+			i = jsonAttacks.iterator();
+			while(i.hasNext()) {
+				JSONObject jsonAttack = (JSONObject) i.next();
+				String stringAttack = utils.toCamelCase((String)jsonAttack.get("name"));
+
+				try {
+		      Class cls = Class.forName("MakeRangedWeapon");
+		      Method makeAtttack = cls.getDeclaredMethod(stringAttack, new Class[]{String.class});
+		      MakeRangedWeapon makeRangedWeapon = new MakeRangedWeapon();
+		      rangedWeapons.add((RangedWeapon)makeAtttack.invoke(makeRangedWeapon, (String)jsonAttack.get("descriptor")));
+		    }
+		    catch(Exception ex){
+		      ex.printStackTrace();
+		    }
+			}
+
+		ArrayList<Spell> spells = new ArrayList<Spell>();
+		jsonAttacks = (JSONArray) jsonPlayer.get("spells");
+		i = jsonAttacks.iterator();
+		while(i.hasNext()) {
+			JSONObject jsonAttack = (JSONObject) i.next();
+			String stringAttack = utils.toCamelCase((String)jsonAttack.get("name"));
+
+			try {
+	      Class cls = Class.forName("MakeSpell");
+	      Method makeAtttack = cls.getDeclaredMethod(stringAttack, new Class[]{String.class});
+	      MakeSpell makeSpell = new MakeSpell();
+	      spells.add((Spell)makeAtttack.invoke(makeSpell, (String)jsonAttack.get("descriptor")));
+	    }
+	    catch(Exception ex){
+	      ex.printStackTrace();
+	    }
+		}
+
+		ArrayList<Armor> armor = new ArrayList<Armor>();
+		jsonDefenses = (JSONArray) jsonPlayer.get("armor");
+		i = jsonDefenses.iterator();
+		while(i.hasNext()) {
+			JSONObject jsonDefense = (JSONObject) i.next();
+			String stringAttack = utils.toCamelCase((String)jsonDefense.get("name"));
+
+			try {
+	      Class cls = Class.forName("MakeArmor");
+	      Method makeAtttack = cls.getDeclaredMethod(stringAttack, new Class[]{String.class});
+	      MakeArmor makeArmor = new MakeArmor();
+	      armor.add((Armor)makeAtttack.invoke(makeArmor, (String)jsonDefense.get("descriptor")));
+	    }
+	    catch(Exception ex){
+	      ex.printStackTrace();
+	    }
+		}
+
+		return new GameState((int)(long)jsonGame.get("node"), new Player((String)jsonPlayer.get("class"), (String)jsonPlayer.get("name"), meleeWeapons.toArray(new MeleeWeapon[meleeWeapons.size()]), rangedWeapons.toArray(new RangedWeapon[rangedWeapons.size()]), spells.toArray(new Spell[spells.size()]), armor.toArray(new Armor[armor.size()]), (int)(long)jsonPlayer.get("strength"), (int)(long)jsonPlayer.get("constitution"), (int)(long)jsonPlayer.get("dexterity"), (int)(long)jsonPlayer.get("speed"), (int)(long)jsonPlayer.get("intelligence"), (int)(long)jsonPlayer.get("wizardry"), (int)(long)jsonPlayer.get("luck"), (int)(long)jsonPlayer.get("charisma"), (int)(long)jsonPlayer.get("heal rate"), (int)(long)jsonPlayer.get("gp"), (int)(long)jsonPlayer.get("xp"), (int)(long)jsonPlayer.get("level")));
+	}
+	catch (Exception e) {
+		e.printStackTrace();
+	}
+	return null;
+}
+	public static void write(String saveName, GameState state) {
 		JSONObject gameState = new JSONObject();
 		gameState.put("Save name", saveName);
-		gameState.put("node", nodeID);
+		gameState.put("node", state.getNodeID());
+
+		// for ease of use
+		Player p = state.getPlayer();
 
 		JSONObject player = new JSONObject();
 		player.put("name", p.toString());
@@ -31,13 +131,6 @@ public class Save {
 			JSONObject next = new JSONObject();
 			next.put("name", attack.getName());
 			next.put("descriptor", attack.getDescriptor());
-			next.put("plural", attack.isPlural());
-			next.put("dice", attack.getDice());
-			next.put("adds", attack.getAdds());
-			next.put("min str", attack.getMinStr());
-			next.put("min dex", attack.getMinDex());
-			next.put("price", attack.getPrice());
-			next.put("two hands", attack.isTwoHanded());
 			meleeWeapons.add(next);
 		}
 		player.put("melee weapons", meleeWeapons);
@@ -48,14 +141,6 @@ public class Save {
 			JSONObject next = new JSONObject();
 			next.put("name", attack.getName());
 			next.put("descriptor", attack.getDescriptor());
-			next.put("plural", attack.isPlural());
-			next.put("dice", attack.getDice());
-			next.put("adds", attack.getAdds());
-			next.put("min str", attack.getMinStr());
-			next.put("min dex", attack.getMinDex());
-			next.put("uses", attack.getMaxUses());
-			next.put("price", attack.getPrice());
-			next.put("two hands", attack.isTwoHanded());
 			rangedWeapons.add(next);
 		}
 		player.put("ranged weapons", rangedWeapons);
@@ -66,13 +151,6 @@ public class Save {
 			JSONObject next = new JSONObject();
 			next.put("name", attack.getName());
 			next.put("descriptor", attack.getDescriptor());
-			next.put("plural", attack.isPlural());
-			next.put("dice", attack.getDice());
-			next.put("adds", attack.getAdds());
-			next.put("min int", attack.getMinInt());
-			next.put("wiz cost", attack.getWizCost());
-			next.put("price", attack.getPrice());
-			next.put("two hands", attack.isTwoHanded());
 			spells.add(next);
 		}
 		player.put("spells", spells);
@@ -83,13 +161,6 @@ public class Save {
 			JSONObject next = new JSONObject();
 			next.put("name", defense.getName());
 			next.put("descriptor", defense.getDescriptor());
-			next.put("min str", defense.getMinStr());
-			next.put("min dex", defense.getMinDex());
-			next.put("defense value", defense.getDefenseValue());
-			next.put("price", defense.getPrice());
-			next.put("dex debuff", defense.getDexDebuff());
-			next.put("speed debuff", defense.getSpeedDebuff());
-			next.put("magic resistance", defense.getMagicResistance());
 			armor.add(next);
 		}
 		player.put("armor", armor);
@@ -101,7 +172,7 @@ public class Save {
 			jsonFileWriter.write(gameState.toJSONString());
 			jsonFileWriter.flush();
 			jsonFileWriter.close();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
