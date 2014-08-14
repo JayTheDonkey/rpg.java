@@ -33,11 +33,13 @@ class RPG {
     Node current = start;
     while((current = current.process(human)) != null) {}
 
-    // GameState loaded = Save.read("save1");
+    utils.print("\nLoading game from JSON file, starting at choice node\n");
 
-    // human = loaded.getPlayer();
-    // current = Node.getNodeByID(loaded.getNodeID());
+    GameState loaded = Save.read("save1");
 
-    // while((current = current.process(human)) != null) {}
+    human = loaded.getPlayer();
+    current = Node.getNodeByID(loaded.getNodeID());
+
+    while((current = current.process(human)) != null) {}
   }
 }
