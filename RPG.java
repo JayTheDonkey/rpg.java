@@ -33,11 +33,11 @@ class RPG {
     Node current = start;
     while((current = current.process(human)) != null) {}
 
-    // GameState loaded = Save.read("save1");
+    GameState loaded = Save.read("save1");
 
-    // human = loaded.getPlayer();
-    // current = Node.getNodeByID(loaded.getNodeID());
+    human = loaded.getPlayer();
+    current = Node.getNodeByID(loaded.getNodeID());
 
-    // while((current = current.process(human)) != null) {}
+    while((current = current.process(human)) != null) {}
   }
 }
