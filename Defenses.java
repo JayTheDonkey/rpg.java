@@ -10,34 +10,34 @@ public class Defenses {
   speedDebuff = tempSpeedDebuff;
   magicResistance = tempMagicResistance;
 }
-public String getName(){
+public String getName() {
  return name;
 }
-public String getDescriptor(){
+public String getDescriptor() {
  return descriptor;
 }
-public String toString(){
+public String toString() {
   return ("a " + descriptor + " " + name);
 }
-public int getMinDex(){
+public int getMinDex() {
   return minDex;
 }
-public int getMinStr(){
+public int getMinStr() {
   return minStr;
 }
-public int getDefenseValue(){
+public int getDefenseValue() {
   return defenseValue;
 }
-public int getPrice(){
+public int getPrice() {
   return price;
 }
-public int getMagicResistance(){
+public int getMagicResistance() {
   return magicResistance;
 }
-public int getDexDebuff(){
+public int getDexDebuff() {
   return dexDebuff;
 }
-public int getSpeedDebuff(){
+public int getSpeedDebuff() {
   return speedDebuff;
 }
 public boolean canUse(Creature c) {
