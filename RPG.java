@@ -12,7 +12,7 @@ class RPG {
     special.add(MakeMonster.flameArcher());
     special.add(MakeMonster.skeletalWizard());
 
-    Player human = Setup.createPlayer();
+    Player human = MakePlayer.player();
 
     EndNode goodEnding = new EndNode(new String[] {"...and you live happily ever after"});
     EndNode badEnding = new EndNode(new String[] {"...and then you died"});

@@ -2,8 +2,8 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Setup {
-  public static Player createPlayer() {
+public class MakePlayer {
+  public static Player player() {
     UI.out.println("What is your name?");
     String name = UI.in.nextLine();
     if (name.toLowerCase().equals("sir robin")) {
@@ -91,10 +91,10 @@ public class Setup {
         Strength= stats.remove(0);
         Intelligence= stats.remove(0);
         Collections.shuffle(stats);
-        Wizardry= stats.remove(0);
-        Charisma= stats.remove(0);
-        Luck= stats.remove(0);
-        Speed= stats.remove(0);
+        Wizardry = stats.remove(0);
+        Charisma = stats.remove(0);
+        Luck = stats.remove(0);
+        Speed = stats.remove(0);
         Dexterity= stats.remove(0);
         HealRate = 5;
         break;
@@ -158,9 +158,9 @@ public class Setup {
     int dice1, dice2, dice3;
     int total = 0;
     do {
-      dice1 = utils.random(1,7);
-      dice2 = utils.random(1,7);
-      dice3 = utils.random(1,7);
+      dice1 = utils.random(1, 7);
+      dice2 = utils.random(1, 7);
+      dice3 = utils.random(1, 7);
       total += (dice1 + dice2 + dice3);
     }while (dice1 == dice2 && dice2 == dice3);
     return total;

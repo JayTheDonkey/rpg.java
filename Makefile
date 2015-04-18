@@ -1,10 +1,10 @@
 test: build run clean
 
 build:
-	javac -cp ./json-simple.jar:. *.java
+	javac -cp Lib:Lib/json-simple.jar:. *.java **/*.java
 
 run:
-	java -cp ./json-simple.jar:. RPG
+	java -cp Lib:Lib/json-simple.jar:Combat:Creatures:Data:Effects:Items:Nodes:. RPG
 
 clean:
-	rm *.class
+	rm -f *.class **/*.class
