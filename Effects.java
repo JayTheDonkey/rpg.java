@@ -1,5 +1,3 @@
-
-
 public class Effects {
  public Effects (String tempName, int tempStrMod, int tempDexMod, int tempWizMod, int tempIntMod, int tempConMod, int tempSpdMod, int tempChMod, int tempLkMod) {
   name = tempName;
@@ -40,7 +38,7 @@ public class Effects {
   return (intialLk + lkMod);
  }
  protected String name;
- protected int strMod, dexMod, wizMod, intMod, conMod, spdMod, lkMod, chMod; 
+ protected int strMod, dexMod, wizMod, intMod, conMod, spdMod, lkMod, chMod;
 }
 
 
