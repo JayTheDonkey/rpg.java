@@ -1,27 +1,25 @@
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Scanner;
 
 public class Setup {
   public static Player createPlayer() {
-    Scanner scan = new Scanner(System.in);
-    System.out.println("What is your name?");
-    String name = scan.nextLine();
+    UI.out.println("What is your name?");
+    String name = UI.in.nextLine();
     if (name.toLowerCase().equals("sir robin")) {
       utils.sleep(1000);
-      System.out.println("What is your Quest?");
+      UI.out.println("What is your Quest?");
       utils.sleep(2000);
-      System.out.println("To find the Holy Grail!");
+      UI.out.println("To find the Holy Grail!");
       utils.sleep(2000);
-      System.out.println("What...");
+      UI.out.println("What...");
       utils.sleep(1000);
-      System.out.print("is the capital of Assyria?");
+      UI.out.print("is the capital of Assyria?");
       utils.sleep(1000);
-      System.out.println("");
-      System.out.println("I dont know that!");
+      UI.out.println("");
+      UI.out.println("I dont know that!");
       utils.sleep(100);
-      System.out.println("AGGHHHHHHHHHHH");
+      UI.out.println("AGGHHHHHHHHHHH");
       utils.sleep(1000);
       System.exit(0);
     }
@@ -49,7 +47,7 @@ public class Setup {
     ArrayList<Armor> Armor = new ArrayList<Armor>();
 
     ArrayList<String> classes = new ArrayList<String>(Arrays.asList(new String[]{"Rogue", "Warrior", "Wizard", "Cleric"}));
-    int classChoice = utils.menu("Choose your class", classes);
+    int classChoice = UI.menu("Choose your class", classes);
 
     switch(classChoice) {
       case 0:
@@ -102,15 +100,15 @@ public class Setup {
         break;
     }
 
-    System.out.println("your stats:");
-    System.out.println("str:\t" + Strength);
-    System.out.println("con:\t" + Constitution);
-    System.out.println("dex:\t" + Dexterity);
-    System.out.println("spd:\t" + Speed);
-    System.out.println("wiz:\t" + Wizardry);
-    System.out.println("int:\t" + Intelligence);
-    System.out.println("lk:\t" + Luck);
-    System.out.println("chr:\t" + Charisma);
+    UI.out.println("your stats:");
+    UI.out.println("str:\t" + Strength);
+    UI.out.println("con:\t" + Constitution);
+    UI.out.println("dex:\t" + Dexterity);
+    UI.out.println("spd:\t" + Speed);
+    UI.out.println("wiz:\t" + Wizardry);
+    UI.out.println("int:\t" + Intelligence);
+    UI.out.println("lk:\t" + Luck);
+    UI.out.println("chr:\t" + Charisma);
 
     Player p = new Player(classes.get(classChoice), name, new MeleeWeapon[]{}, new RangedWeapon[]{}, new Spell[]{}, new Armor[]{}, Strength, Constitution, Dexterity, Speed, Intelligence, Wizardry, Luck, Charisma, HealRate, utils.random(300,700));
 

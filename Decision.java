@@ -1,4 +1,4 @@
 @FunctionalInterface
 public interface Decision {
-    public abstract Node run(Player p);
+  public abstract Node run(Player p);
 }

@@ -8,7 +8,7 @@ public class PlayerDecisionNode extends DecisionNode {
   }
 
   public Node process(Player p) {
-    return nextNodes.get(utils.menu("what would you like to do?", menu));
+    return nextNodes.get(UI.menu("what would you like to do?", menu));
     }
 
   private ArrayList<String> menu;

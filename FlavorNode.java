@@ -6,7 +6,7 @@ class FlavorNode extends Node {
   }
   public Node process(Player p) {
   	for(int i = 0; i < flavorText.length; i++) {
-  		utils.print(flavorText[i]);
+  		UI.out.println(flavorText[i]);
       if(flavorText.length > 1) {
         utils.sleep(1000);
       }

@@ -33,7 +33,7 @@ class RPG {
     Node current = start;
     while((current = current.process(human)) != null) {}
 
-    utils.print("\nLoading game from JSON file, starting at choice node\n");
+    UI.out.println("\nLoading game from JSON file, starting at choice node\n");
 
     GameState loaded = Save.read("save1");
 

@@ -30,7 +30,7 @@ public class Combat {
 private static boolean hitHealPlayer(Player p, ArrayList<Monster> monsters, boolean atRange) {
  int blockable = 0;
  int unblockable = 0;
- utils.print("you are attacked by");
+ UI.out.println("you are attacked by");
  ArrayList<Monster> attackers = new ArrayList<Monster>();
  ArrayList<Attack> attackersWeapons = new ArrayList<Attack>();
  for(int i = 0; i < monsters.size(); i++) {
@@ -50,40 +50,40 @@ private static boolean hitHealPlayer(Player p, ArrayList<Monster> monsters, bool
     unblockable += temp.getUnblockable();
   }
 }
-utils.printMonstersAndWeapons(attackers, attackersWeapons);
+UI.printMonstersAndWeapons(attackers, attackersWeapons);
 int taken = 0;
 if(blockable + unblockable > 0) {
- System.out.println("you have " + blockable + " damage and " + unblockable + " spite damage coming your way");
+ UI.out.println("you have " + blockable + " damage and " + unblockable + " spite damage coming your way");
  taken = p.takeDamage(new Damage(blockable, unblockable));
  if(taken == 1) {
-   utils.print("you almost blocked that, but due to lack of skill you recieve 1 point of damage");
+   UI.out.println("you almost blocked that, but due to lack of skill you recieve 1 point of damage");
  }
  else if(taken > 1) {
-   System.out.println("alas, you are not able to block it all, and you suffer " + taken + " points of damage");
+   UI.out.println("alas, you are not able to block it all, and you suffer " + taken + " points of damage");
  }
  else {
-   utils.print("you didn't take even a scratch!");
+   UI.out.println("you didn't take even a scratch!");
  }
 }
 else {
  if(monsters.size() > 1) {
-   utils.print("you enemies are even more skilled than you, for they deal you not 1 point of damage!");
+   UI.out.println("you enemies are even more skilled than you, for they deal you not 1 point of damage!");
  }
  else {
-   utils.print("your foe is a worthy opponent, for he just dealt you a whopping 0 damage!");
+   UI.out.println("your foe is a worthy opponent, for he just dealt you a whopping 0 damage!");
  }
 }
 int healed = p.heal();
 if(healed == 1) {
- utils.print("you found a bandaid and regain 1 point of lost health!");
+ UI.out.println("you found a bandaid and regain 1 point of lost health!");
 }
 else if(healed > 1) {
- System.out.println("you must have a medical degree or strong magic indeed to be able to heal " + healed + " points of damage!");
+ UI.out.println("you must have a medical degree or strong magic indeed to be able to heal " + healed + " points of damage!");
 }
 if(taken > 0 || healed > 0) {
- System.out.println("you now have " + p.getConstitution() + " health");
+ UI.out.println("you now have " + p.getConstitution() + " health");
 }
-utils.print("");
+UI.out.println("");
 return(p.getConstitution() > 0);
 }
 
@@ -100,38 +100,38 @@ private static boolean hitHealMonster(Player p, ArrayList<Monster> monsters, int
 
  Damage damage;
  if(atRange) {
-  damage = p.dealRangedDamage(utils.menu("please select your weapon", rAttacks));
+  damage = p.dealRangedDamage(UI.menu("please select your weapon", rAttacks));
 }
 else {
- damage = p.dealMeleeDamage(utils.menu("please select your weapon", mAttacks));
+ damage = p.dealMeleeDamage(UI.menu("please select your weapon", mAttacks));
 }
-System.out.println("you hit a " + monsters.get(whichMonster) + " for " + damage.getBlockable() + " damage and " + damage.getUnblockable() + " spite damage");
+UI.out.println("you hit a " + monsters.get(whichMonster) + " for " + damage.getBlockable() + " damage and " + damage.getUnblockable() + " spite damage");
 int taken = monsters.get(whichMonster).takeDamage(damage);
 if(taken > 0) {
- utils.print("their armour cannot completely shield them and they take damage");
+ UI.out.println("their armour cannot completely shield them and they take damage");
 }
 else {
-  utils.print("alas, their defenses are too strong! you do not get through");
+  UI.out.println("alas, their defenses are too strong! you do not get through");
 }
 int healed = monsters.get(whichMonster).heal();
 if(healed > 0) {
- utils.print("unfortunately, the " + monsters.get(whichMonster) + " appears to have recovered a little");
+ UI.out.println("unfortunately, the " + monsters.get(whichMonster) + " appears to have recovered a little");
 }
 if(monsters.get(whichMonster).getConstitution() <= 0) {
- System.out.print("good job! you killed a " + monsters.get(whichMonster) + " and got " + monsters.get(whichMonster).getMonsterRating() + "xp!");
+ UI.out.print("good job! you killed a " + monsters.get(whichMonster) + " and got " + monsters.get(whichMonster).getMonsterRating() + "xp!");
  p.addXP(monsters.remove(whichMonster).getMonsterRating());
  if(monsters.size() == 0) {
-   utils.print("\n");
+   UI.out.println("\n");
    return false;
  }
  else {
-   utils.print(" now all that remains are");
-   utils.printMonsters(monsters);
-   utils.print("");
+   UI.out.println(" now all that remains are");
+   UI.printMonsters(monsters);
+   UI.out.println("");
    return true;
  }
 }
-utils.print("");
+UI.out.println("");
 return true;
 }
 
@@ -140,9 +140,9 @@ private static boolean actualCombat(Player p, CombatNode node, boolean atRange){
  node.startCombat();
  ArrayList<Monster> monsters = node.monsterList();
  ArrayList<Monster> successful = new ArrayList<Monster>();
- utils.print("You are brave indeed to face");
- utils.printMonsters(monsters);
- utils.print("");
+ UI.out.println("You are brave indeed to face");
+ UI.printMonsters(monsters);
+ UI.out.println("");
  while(!node.combatOver()) {
    ArrayList<String> options = new ArrayList<String>();
    options.add("flee");
@@ -154,27 +154,27 @@ private static boolean actualCombat(Player p, CombatNode node, boolean atRange){
      options.add("escape into ranged combat");
      options.add("continue close quarters fighting");
    }
-   switch(utils.menu("what would you like to do this round?", options)) {
+   switch(UI.menu("what would you like to do this round?", options)) {
      case 0:
      successful = initiative(monsters, p, atRange, true);
      if(successful.size() == 0) {
-       utils.print("\ngood job! you escaped!");
+       UI.out.println("\ngood job! you escaped!");
        return true;
      }
      else {
-       utils.print("\nsorry, you were caught by");
-       utils.printMonsters(successful);
+       UI.out.println("\nsorry, you were caught by");
+       UI.printMonsters(successful);
        if(!hitHealPlayer(p, successful, false)) {
          return false;
        }
        if(atRange) {
-         utils.print("you are now in melee with the monsters");
+         UI.out.println("you are now in melee with the monsters");
          atRange = false;
        }
        else {
-         utils.print("you remain in melee with the monsters");
+         UI.out.println("you remain in melee with the monsters");
        }
-       utils.print("\nnow for the main combat phase");
+       UI.out.println("\nnow for the main combat phase");
      }
      break;
      case 1:
@@ -182,33 +182,33 @@ private static boolean actualCombat(Player p, CombatNode node, boolean atRange){
        atRange = false;
        ArrayList<Monster> suprised = initiative(monsters, p, atRange, false);
        if(suprised.size() > 0) {
-         utils.print("good job! you suprised");
-         utils.printMonsters(suprised);
+         UI.out.println("good job! you suprised");
+         UI.printMonsters(suprised);
          ArrayList<String> monsterMenu = new ArrayList<String>();
          for(int i = 0; i < suprised.size(); i++) {
            monsterMenu.add(suprised.get(i).toString());
          }
-         if(!hitHealMonster(p, suprised, utils.menu("\nyou get an extra suprise melee attack! who would you like to perform the extra attack on?", monsterMenu), false)) {
+         if(!hitHealMonster(p, suprised, UI.menu("\nyou get an extra suprise melee attack! who would you like to perform the extra attack on?", monsterMenu), false)) {
            return true;
          }
-         utils.print("\nnow for the main combat phase");
+         UI.out.println("\nnow for the main combat phase");
        }
      }
      else {
        successful = initiative(monsters, p, atRange, true);
        if(successful.size() == 0) {
-         utils.print("good job! you got some distance from the monsters!");
+         UI.out.println("good job! you got some distance from the monsters!");
          atRange = true;
-         utils.print("\nnow for the main combat phase");
+         UI.out.println("\nnow for the main combat phase");
        }
        else {
-         utils.print("sorry, you were stopped by");
-         utils.printMonsters(successful);
+         UI.out.println("sorry, you were stopped by");
+         UI.printMonsters(successful);
          if(!hitHealPlayer(p, successful, false)) {
            return false;
          }
-         utils.print("you remain in melee");
-         utils.print("\nnow for the main combat phase");
+         UI.out.println("you remain in melee");
+         UI.out.println("\nnow for the main combat phase");
        }
      }
      break;
